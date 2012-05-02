@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  SubTTS
+
+  Created by peter ljunglöf on 2012-02-29.
+  Copyright (c) 2012 göteborgs universtiet. All rights reserved.
+*/
+
+"Start speaking" = "Börja prata";
+"Start speaking %@" = "Börja prata \"%@\"";
+"Stop speaking" = "Sluta prata";
+"Stop speaking %@" = "Sluta prata \"%@\"";
+"About SubTTS" = "Om Pratmakaren";
+"Preferences" = "Ställ in röst";
+"Quit" = "Sluta";
+"SubTTS" = "Pratmakaren";

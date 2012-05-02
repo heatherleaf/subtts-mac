@@ -1,0 +1,419 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D0422D6614FD04C300557ADA /* STSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = D0422D6514FD04C300557ADA /* STSubtitle.m */; };
+		D0422D6D14FD138E00557ADA /* STSubtitleArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D0422D6C14FD138E00557ADA /* STSubtitleArray.m */; };
+		D0AF2FBB14F57DB900B21603 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AF2FBA14F57DB900B21603 /* Cocoa.framework */; };
+		D0AF2FC514F57DB900B21603 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0AF2FC314F57DB900B21603 /* InfoPlist.strings */; };
+		D0AF2FC714F57DB900B21603 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AF2FC614F57DB900B21603 /* main.m */; };
+		D0AF2FCB14F57DB900B21603 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D0AF2FC914F57DB900B21603 /* Credits.rtf */; };
+		D0AF2FCE14F57DB900B21603 /* STAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AF2FCD14F57DB900B21603 /* STAppDelegate.m */; };
+		D0AF2FDA14F5858600B21603 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AF2FD914F5858600B21603 /* ScriptingBridge.framework */; };
+		D0B28AFD14FE459B00865D7B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B28AFB14FE459B00865D7B /* MainMenu.xib */; };
+		D0B28B0A14FE58DE00865D7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0B28B0C14FE58DE00865D7B /* Localizable.strings */; };
+		D0D4381D14FA70B200F336C5 /* STPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4381C14FA70B200F336C5 /* STPlayer.m */; };
+		D0D4382C14FA8AE400F336C5 /* STQuickTimePlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4382B14FA8AE400F336C5 /* STQuickTimePlayer.m */; };
+		D0D4386A14FAE4B600F336C5 /* STVLCPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4386914FAE4B500F336C5 /* STVLCPlayer.m */; };
+		D0F452E815036B0200813633 /* STQuickTime7Player.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F452E715036B0200813633 /* STQuickTime7Player.m */; };
+		D0F452EC150379E600813633 /* STDVDPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F452EB150379E600813633 /* STDVDPlayer.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D0422D6414FD04C300557ADA /* STSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitle.h; sourceTree = "<group>"; };
+		D0422D6514FD04C300557ADA /* STSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitle.m; sourceTree = "<group>"; };
+		D0422D6B14FD138E00557ADA /* STSubtitleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitleArray.h; sourceTree = "<group>"; };
+		D0422D6C14FD138E00557ADA /* STSubtitleArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitleArray.m; sourceTree = "<group>"; };
+		D04253FB14F645010010B4B2 /* DVDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDPlayer.h; sourceTree = "<group>"; };
+		D042540314F687000010B4B2 /* QuickTimePlayer7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickTimePlayer7.h; sourceTree = "<group>"; };
+		D0AF2FB614F57DB900B21603 /* SubTTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubTTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0AF2FBA14F57DB900B21603 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		D0AF2FBD14F57DB900B21603 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		D0AF2FBE14F57DB900B21603 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		D0AF2FBF14F57DB900B21603 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D0AF2FC214F57DB900B21603 /* SubTTS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SubTTS-Info.plist"; sourceTree = "<group>"; };
+		D0AF2FC414F57DB900B21603 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D0AF2FC614F57DB900B21603 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D0AF2FC814F57DB900B21603 /* SubTTS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SubTTS-Prefix.pch"; sourceTree = "<group>"; };
+		D0AF2FCA14F57DB900B21603 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		D0AF2FCC14F57DB900B21603 /* STAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STAppDelegate.h; sourceTree = "<group>"; };
+		D0AF2FCD14F57DB900B21603 /* STAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STAppDelegate.m; sourceTree = "<group>"; };
+		D0AF2FD814F5848900B21603 /* VLC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLC.h; sourceTree = "<group>"; };
+		D0AF2FD914F5858600B21603 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScriptingBridge.framework; sourceTree = "<group>"; };
+		D0B28AFC14FE459B00865D7B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		D0B28B0614FE535500865D7B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D0B28B0B14FE58DE00865D7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D0B28B0D14FE58E900865D7B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D0B28B0E14FE5D2000865D7B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = sv; path = sv.lproj/Credits.rtf; sourceTree = "<group>"; };
+		D0D4381B14FA70B200F336C5 /* STPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPlayer.h; sourceTree = "<group>"; };
+		D0D4381C14FA70B200F336C5 /* STPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPlayer.m; sourceTree = "<group>"; };
+		D0D4382A14FA8AE400F336C5 /* STQuickTimePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STQuickTimePlayer.h; sourceTree = "<group>"; };
+		D0D4382B14FA8AE400F336C5 /* STQuickTimePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQuickTimePlayer.m; sourceTree = "<group>"; };
+		D0D4386714FAD95700F336C5 /* QuickTimePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickTimePlayer.h; sourceTree = "<group>"; };
+		D0D4386814FAE4B500F336C5 /* STVLCPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STVLCPlayer.h; sourceTree = "<group>"; };
+		D0D4386914FAE4B500F336C5 /* STVLCPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STVLCPlayer.m; sourceTree = "<group>"; };
+		D0F452E615036B0200813633 /* STQuickTime7Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STQuickTime7Player.h; sourceTree = "<group>"; };
+		D0F452E715036B0200813633 /* STQuickTime7Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQuickTime7Player.m; sourceTree = "<group>"; };
+		D0F452EA150379E500813633 /* STDVDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDVDPlayer.h; sourceTree = "<group>"; };
+		D0F452EB150379E600813633 /* STDVDPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDVDPlayer.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D0AF2FB314F57DB900B21603 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0AF2FBB14F57DB900B21603 /* Cocoa.framework in Frameworks */,
+				D0AF2FDA14F5858600B21603 /* ScriptingBridge.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D0422D6214FD04A000557ADA /* Subtitles */ = {
+			isa = PBXGroup;
+			children = (
+				D0422D6B14FD138E00557ADA /* STSubtitleArray.h */,
+				D0422D6C14FD138E00557ADA /* STSubtitleArray.m */,
+				D0422D6414FD04C300557ADA /* STSubtitle.h */,
+				D0422D6514FD04C300557ADA /* STSubtitle.m */,
+			);
+			name = Subtitles;
+			sourceTree = "<group>";
+		};
+		D0AF2FAB14F57DB900B21603 = {
+			isa = PBXGroup;
+			children = (
+				D0AF2FC014F57DB900B21603 /* SubTTS */,
+				D0AF2FB914F57DB900B21603 /* Frameworks */,
+				D0AF2FB714F57DB900B21603 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D0AF2FB714F57DB900B21603 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D0AF2FB614F57DB900B21603 /* SubTTS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D0AF2FB914F57DB900B21603 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0AF2FD914F5858600B21603 /* ScriptingBridge.framework */,
+				D0AF2FBA14F57DB900B21603 /* Cocoa.framework */,
+				D0AF2FBC14F57DB900B21603 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0AF2FBC14F57DB900B21603 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0AF2FBD14F57DB900B21603 /* AppKit.framework */,
+				D0AF2FBE14F57DB900B21603 /* CoreData.framework */,
+				D0AF2FBF14F57DB900B21603 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		D0AF2FC014F57DB900B21603 /* SubTTS */ = {
+			isa = PBXGroup;
+			children = (
+				D0B28B0C14FE58DE00865D7B /* Localizable.strings */,
+				D0AF2FCC14F57DB900B21603 /* STAppDelegate.h */,
+				D0AF2FCD14F57DB900B21603 /* STAppDelegate.m */,
+				D0D4382914FA8AB800F336C5 /* Players */,
+				D0422D6214FD04A000557ADA /* Subtitles */,
+				D0AF2FDF14F59A6200B21603 /* SBApplication Headers */,
+				D0AF2FC114F57DB900B21603 /* Supporting Files */,
+			);
+			path = SubTTS;
+			sourceTree = "<group>";
+		};
+		D0AF2FC114F57DB900B21603 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D0AF2FC314F57DB900B21603 /* InfoPlist.strings */,
+				D0AF2FC914F57DB900B21603 /* Credits.rtf */,
+				D0AF2FC214F57DB900B21603 /* SubTTS-Info.plist */,
+				D0AF2FC614F57DB900B21603 /* main.m */,
+				D0AF2FC814F57DB900B21603 /* SubTTS-Prefix.pch */,
+				D0B28AFB14FE459B00865D7B /* MainMenu.xib */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D0AF2FDF14F59A6200B21603 /* SBApplication Headers */ = {
+			isa = PBXGroup;
+			children = (
+				D0D4386714FAD95700F336C5 /* QuickTimePlayer.h */,
+				D042540314F687000010B4B2 /* QuickTimePlayer7.h */,
+				D0AF2FD814F5848900B21603 /* VLC.h */,
+				D04253FB14F645010010B4B2 /* DVDPlayer.h */,
+			);
+			name = "SBApplication Headers";
+			sourceTree = "<group>";
+		};
+		D0D4382914FA8AB800F336C5 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				D0D4381B14FA70B200F336C5 /* STPlayer.h */,
+				D0D4381C14FA70B200F336C5 /* STPlayer.m */,
+				D0D4382A14FA8AE400F336C5 /* STQuickTimePlayer.h */,
+				D0D4382B14FA8AE400F336C5 /* STQuickTimePlayer.m */,
+				D0F452E615036B0200813633 /* STQuickTime7Player.h */,
+				D0F452E715036B0200813633 /* STQuickTime7Player.m */,
+				D0D4386814FAE4B500F336C5 /* STVLCPlayer.h */,
+				D0D4386914FAE4B500F336C5 /* STVLCPlayer.m */,
+				D0F452EA150379E500813633 /* STDVDPlayer.h */,
+				D0F452EB150379E600813633 /* STDVDPlayer.m */,
+			);
+			name = Players;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D0AF2FB514F57DB900B21603 /* SubTTS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0AF2FD414F57DB900B21603 /* Build configuration list for PBXNativeTarget "SubTTS" */;
+			buildPhases = (
+				D0AF2FB214F57DB900B21603 /* Sources */,
+				D0AF2FB314F57DB900B21603 /* Frameworks */,
+				D0AF2FB414F57DB900B21603 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SubTTS;
+			productName = SubTTS;
+			productReference = D0AF2FB614F57DB900B21603 /* SubTTS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D0AF2FAD14F57DB900B21603 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = ST;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "göteborgs universtiet";
+			};
+			buildConfigurationList = D0AF2FB014F57DB900B21603 /* Build configuration list for PBXProject "SubTTS" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				sv,
+			);
+			mainGroup = D0AF2FAB14F57DB900B21603;
+			productRefGroup = D0AF2FB714F57DB900B21603 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D0AF2FB514F57DB900B21603 /* SubTTS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D0AF2FB414F57DB900B21603 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0AF2FC514F57DB900B21603 /* InfoPlist.strings in Resources */,
+				D0AF2FCB14F57DB900B21603 /* Credits.rtf in Resources */,
+				D0B28AFD14FE459B00865D7B /* MainMenu.xib in Resources */,
+				D0B28B0A14FE58DE00865D7B /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D0AF2FB214F57DB900B21603 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0AF2FC714F57DB900B21603 /* main.m in Sources */,
+				D0AF2FCE14F57DB900B21603 /* STAppDelegate.m in Sources */,
+				D0D4381D14FA70B200F336C5 /* STPlayer.m in Sources */,
+				D0D4382C14FA8AE400F336C5 /* STQuickTimePlayer.m in Sources */,
+				D0D4386A14FAE4B600F336C5 /* STVLCPlayer.m in Sources */,
+				D0422D6614FD04C300557ADA /* STSubtitle.m in Sources */,
+				D0422D6D14FD138E00557ADA /* STSubtitleArray.m in Sources */,
+				D0F452E815036B0200813633 /* STQuickTime7Player.m in Sources */,
+				D0F452EC150379E600813633 /* STDVDPlayer.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D0AF2FC314F57DB900B21603 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0AF2FC414F57DB900B21603 /* en */,
+				D0B28B0614FE535500865D7B /* sv */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D0AF2FC914F57DB900B21603 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0AF2FCA14F57DB900B21603 /* en */,
+				D0B28B0E14FE5D2000865D7B /* sv */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		D0B28AFB14FE459B00865D7B /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0B28AFC14FE459B00865D7B /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		D0B28B0C14FE58DE00865D7B /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D0B28B0B14FE58DE00865D7B /* en */,
+				D0B28B0D14FE58E900865D7B /* sv */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D0AF2FD214F57DB900B21603 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		D0AF2FD314F57DB900B21603 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_OBJCPP_ARC_ABI = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D0AF2FD514F57DB900B21603 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SubTTS/SubTTS-Prefix.pch";
+				INFOPLIST_FILE = "SubTTS/SubTTS-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D0AF2FD614F57DB900B21603 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SubTTS/SubTTS-Prefix.pch";
+				INFOPLIST_FILE = "SubTTS/SubTTS-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D0AF2FB014F57DB900B21603 /* Build configuration list for PBXProject "SubTTS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0AF2FD214F57DB900B21603 /* Debug */,
+				D0AF2FD314F57DB900B21603 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0AF2FD414F57DB900B21603 /* Build configuration list for PBXNativeTarget "SubTTS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0AF2FD514F57DB900B21603 /* Debug */,
+				D0AF2FD614F57DB900B21603 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D0AF2FAD14F57DB900B21603 /* Project object */;
+}
