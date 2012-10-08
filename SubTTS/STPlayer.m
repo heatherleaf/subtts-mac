@@ -84,8 +84,12 @@
             else 
                 currentTime = currentSeconds;
         }
-        // if (isPlaying) LOG(@"%2d..%2d: (%5.2f) %5.2f = %5.2f", lastSeconds, currentSeconds, 
-        //                    timeSinceLastInvocation, lastTime + timeSinceLastInvocation, currentTime);
+#if 0
+        if (isPlaying) LOG(@"%2ld..%2lu: (%5.2f) %5.2f = %5.2f",
+						   (long)lastSeconds, (unsigned long)currentSeconds,
+                           timeSinceLastInvocation,
+						   lastTime + timeSinceLastInvocation, currentTime);
+#endif
     }
     lastTime = currentTime;
     lastSeconds = currentSeconds;
