@@ -53,8 +53,10 @@
     return [movie duration];
 }
 
-- (NSTimeInterval) currentTimeOfMovie: (QuickTimePlayer7Document*)movie { 
-    return [self extrapolateCurrentTime:[movie currentTime] isPlaying:[movie playing]];
+- (NSTimeInterval) currentTimeOfMovie: (QuickTimePlayer7Document*)movie {
+    NSInteger currentTime = [movie currentTime];
+    NSInteger timeScale = [movie timeScale];
+    return ((NSTimeInterval)currentTime/timeScale);
 }
 
 - (BOOL) isPlayingMovie: (QuickTimePlayer7Document*)movie { 
