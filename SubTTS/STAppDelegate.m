@@ -138,7 +138,7 @@ NSUInteger ttsLastSpokenSubtitle;
             ttsLastSpokenSubtitle = ttsNextSubtitle;
             NSTimeInterval diff = ttsNextSubtitleTime - currentTime;
             if (diff > 0) usleep(diff * 1000000 / 2);
-            [[loadedSubtitles subtitle:ttsNextSubtitle] speak];
+            [[loadedSubtitles subtitleAtIndex:ttsNextSubtitle] speak];
         }
         ttsLatestCurrentTime = currentTime;
     }
@@ -146,9 +146,9 @@ NSUInteger ttsLastSpokenSubtitle;
 
 - (void) calculateNextSubtitle: (NSTimeInterval)currentTime {
     NSUInteger newSubtitle = [loadedSubtitles nextSubtitle:currentTime];
-    ttsNextSubtitleTime = [[loadedSubtitles subtitle:newSubtitle] start];
+    ttsNextSubtitleTime = [[loadedSubtitles subtitleAtIndex:newSubtitle] start];
     LOG(@"Next sub #%ld in %.1fs (%.1fs): %@", (unsigned long)newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime,
-        [[loadedSubtitles subtitle:newSubtitle] text]);
+        [[loadedSubtitles subtitleAtIndex:newSubtitle] text]);
     ttsNextSubtitle = newSubtitle;
 }
 

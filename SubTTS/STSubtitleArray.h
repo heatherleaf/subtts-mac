@@ -16,7 +16,7 @@
 }
 
 - (NSUInteger) count;
-- (STSubtitle*) subtitle: (NSUInteger)nr;
+- (STSubtitle*) subtitleAtIndex: (NSUInteger)nr;
 - (NSUInteger) nextSubtitle: (NSTimeInterval)now;
 
 - (void) addSubtitle: (NSString*)text 

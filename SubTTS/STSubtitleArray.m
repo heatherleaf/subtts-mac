@@ -22,7 +22,7 @@
     return [subtitles count];
 }
 
-- (STSubtitle*) subtitle: (NSUInteger)nr {
+- (STSubtitle*) subtitleAtIndex: (NSUInteger)nr {
     if (nr >= [subtitles count]) 
         return finalSubtitle;
     else 
