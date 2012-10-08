@@ -146,9 +146,10 @@ NSUInteger ttsLastSpokenSubtitle;
 
 - (void) calculateNextSubtitle: (NSTimeInterval)currentTime {
     NSUInteger newSubtitle = [loadedSubtitles nextSubtitle:currentTime];
-    ttsNextSubtitleTime = [[loadedSubtitles subtitleAtIndex:newSubtitle] start];
+    STSubtitle *nextSub = [loadedSubtitles subtitleAtIndex:newSubtitle];
+    ttsNextSubtitleTime = nextSub.start;
     LOG(@"Next sub #%ld in %.1fs (%.1fs): %@", (unsigned long)newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime,
-        [[loadedSubtitles subtitleAtIndex:newSubtitle] text]);
+        nextSub.text);
     ttsNextSubtitle = newSubtitle;
 }
 
@@ -248,8 +249,14 @@ NSUInteger ttsLastSpokenSubtitle;
 
     BOOL isSpeaking = [self timerIsActive];
     if (isSpeaking) {
+        [startSpeaking setEnabled:NO];
+        [stopSpeaking setEnabled:YES];
         [stopSpeaking setTitle: [NSString stringWithFormat: NSLocalizedString(@"Stop speaking %@",nil), ttsCurrentMovieName]];
         [stopSpeaking setAction: @selector(stopTimer:)];
+    }
+    else {
+        [startSpeaking setEnabled:YES];
+        [stopSpeaking setEnabled:NO];
     }
     
     NSUInteger initial_items = [menu numberOfItems];
