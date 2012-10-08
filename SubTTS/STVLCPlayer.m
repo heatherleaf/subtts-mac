@@ -23,7 +23,7 @@
 
 #define HASMOVIE ([[self getPlayer] durationOfCurrentItem] > 0)
 
-- (int) numberOfMovies {
+- (NSUInteger) numberOfMovies {
     if (HASMOVIE)
         return 1;
     else
@@ -44,7 +44,7 @@
     }
 }
 
-- (VLCApplication*) movieAtIndex: (int)nr { 
+- (VLCApplication*) movieAtIndex: (NSUInteger)nr { 
     if (nr == 0 && HASMOVIE)
         return [self getPlayer];
     else 

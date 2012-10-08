@@ -64,8 +64,8 @@ NSString* ttsCurrentMovieName;
 STSubtitleArray* loadedSubtitles;
 NSTimeInterval ttsLatestCurrentTime;
 NSTimeInterval ttsNextSubtitleTime;
-int ttsNextSubtitle;
-int ttsLastSpokenSubtitle;
+NSUInteger ttsNextSubtitle;
+NSUInteger ttsLastSpokenSubtitle;
 
 - (BOOL) timerIsActive {
     return ttsTimer ? [ttsTimer isValid] : NO;
@@ -145,9 +145,9 @@ int ttsLastSpokenSubtitle;
 }
 
 - (void) calculateNextSubtitle: (NSTimeInterval)currentTime {
-    int newSubtitle = [loadedSubtitles nextSubtitle:currentTime];
+    NSUInteger newSubtitle = [loadedSubtitles nextSubtitle:currentTime];
     ttsNextSubtitleTime = [[loadedSubtitles subtitle:newSubtitle] start];
-    LOG(@"Next sub #%d in %.1fs (%.1fs): %@", newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime, 
+    LOG(@"Next sub #%ld in %.1fs (%.1fs): %@", (unsigned long)newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime,
         [[loadedSubtitles subtitle:newSubtitle] text]);
     ttsNextSubtitle = newSubtitle;
 }
@@ -214,7 +214,7 @@ int ttsLastSpokenSubtitle;
 
 - (void) addMenu: (NSMenu*)menu 
        forPlayer: (STPlayer*)player 
-         atIndex: (int)ix 
+         atIndex: (NSUInteger)ix
 {
     NSMenuItem* playerItem = [NSMenuItem new];
     [playerItem setState: ([player isFrontmost] ? NSOnState : NSOffState)];
@@ -252,8 +252,8 @@ int ttsLastSpokenSubtitle;
         [stopSpeaking setAction: @selector(stopTimer:)];
     }
     
-    int initial_items = [menu numberOfItems];
-    int nr;
+    NSUInteger initial_items = [menu numberOfItems];
+    NSUInteger nr;
     for (STPlayer* player in moviePlayers) {
         if ([player isLaunched]) {
             if ([player isFrontmost]) {

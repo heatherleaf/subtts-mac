@@ -18,25 +18,23 @@
     return self;
 }
 
-- (int) count {
+- (NSUInteger) count {
     return [subtitles count];
 }
 
-- (STSubtitle*) subtitle: (int)nr {
-    if (nr < 0)
-        return initialSubtitle;
-    else if (nr >= [subtitles count]) 
+- (STSubtitle*) subtitle: (NSUInteger)nr {
+    if (nr >= [subtitles count]) 
         return finalSubtitle;
     else 
         return [subtitles objectAtIndex:nr];
 }
 
-- (int) nextSubtitle: (NSTimeInterval)now {
-    int low = 0;
-    int high = [subtitles count];
+- (NSUInteger) nextSubtitle: (NSTimeInterval)now {
+    NSUInteger low = 0;
+    NSUInteger high = [subtitles count];
     while (low < high) {
-        int mid = (low + high) / 2;
         STSubtitle* sub = [subtitles objectAtIndex:mid];
+        NSUInteger mid = (low + high) / 2;
         if (now < sub.start) {
             high = mid;
         } else {

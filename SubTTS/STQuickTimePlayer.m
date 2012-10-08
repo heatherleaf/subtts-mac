@@ -21,7 +21,7 @@
     return BundleID; 
 }
 
-- (int) numberOfMovies {
+- (NSUInteger) numberOfMovies {
     return [[self getMovies] count];
 }
 
@@ -29,7 +29,7 @@
     return [self getMovies];
 }
 
-- (QuickTimePlayerDocument*) movieAtIndex: (int)nr { 
+- (QuickTimePlayerDocument*) movieAtIndex: (NSUInteger)nr { 
     return [[self getMovies] objectAtIndex:nr];
 }
 

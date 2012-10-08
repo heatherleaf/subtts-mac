@@ -13,9 +13,9 @@
 - (NSString*) title { return nil; }
 - (NSString*) bundleID { return nil; }
 
-- (int) numberOfMovies { return 0; }
+- (NSUInteger) numberOfMovies { return 0; }
 - (NSArray*) movies { return nil; }
-- (id) movieAtIndex: (int)nr { return nil; }
+- (id) movieAtIndex: (NSUInteger)nr { return nil; }
 - (id) movieWithName: (NSString*)name { return nil; }
 
 - (NSString*) nameOfMovie: (id)movie { return nil; }
@@ -61,7 +61,7 @@
 
 // Some players only give currentTime as integers
 // We guess the fraction by extrapolation from the previous invocation
-- (NSTimeInterval) extrapolateCurrentTime: (int)currentSeconds 
+- (NSTimeInterval) extrapolateCurrentTime: (NSUInteger)currentSeconds 
                                 isPlaying: (BOOL)isPlaying 
 {
     static NSTimeInterval lastTime = -1;
