@@ -11,8 +11,6 @@
 
 @interface STSubtitleArray : NSObject {
     NSMutableArray* subtitles;
-    STSubtitle* initialSubtitle;
-    STSubtitle* finalSubtitle;
 }
 
 - (NSUInteger) count;

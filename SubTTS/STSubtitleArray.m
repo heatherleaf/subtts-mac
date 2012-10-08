@@ -13,8 +13,6 @@
 - (id) init {
     self = [super init];
     subtitles = [NSMutableArray array];
-    initialSubtitle = [STSubtitle subtitle:[NSArray array] start:-MAXFLOAT end:-MAXFLOAT];
-    finalSubtitle = [STSubtitle subtitle:[NSArray array] start:MAXFLOAT end:MAXFLOAT];
     return self;
 }
 
@@ -24,7 +22,7 @@
 
 - (STSubtitle*) subtitleAtIndex: (NSUInteger)nr {
     if (nr >= [subtitles count]) 
-        return finalSubtitle;
+        return [subtitles lastObject];
     else 
         return [subtitles objectAtIndex:nr];
 }
@@ -33,8 +31,8 @@
     NSUInteger low = 0;
     NSUInteger high = [subtitles count];
     while (low < high) {
-        STSubtitle* sub = [subtitles objectAtIndex:mid];
         NSUInteger mid = (low + high) / 2;
+        STSubtitle *sub = [subtitles objectAtIndex:mid];
         if (now < sub.start) {
             high = mid;
         } else {
