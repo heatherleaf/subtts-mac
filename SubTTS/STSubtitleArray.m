@@ -27,19 +27,29 @@
         return [subtitles objectAtIndex:nr];
 }
 
-- (NSUInteger) nextSubtitle: (NSTimeInterval)now {
+- (STSubtitle *) nextSubtitle: (NSTimeInterval)now index:(NSUInteger *)index {
+    STSubtitle *lastSubtitle = [subtitles lastObject];
+    if (now > lastSubtitle.start) {
+        if (index != NULL)  *index = NSNotFound;
+        return nil;
+    }
+    
     NSUInteger low = 0;
     NSUInteger high = [subtitles count];
+    
     while (low < high) {
-        NSUInteger mid = (low + high) / 2;
+        NSUInteger mid = (low + high) >> 1;
         STSubtitle *sub = [subtitles objectAtIndex:mid];
+        
         if (now < sub.start) {
             high = mid;
         } else {
             low = mid + 1;
         }
     }
-    return low;
+    
+    if (index != NULL)  *index = low;
+    return [self subtitleAtIndex:low];
 }
 
 - (void) addSubtitle: (NSString*)text 

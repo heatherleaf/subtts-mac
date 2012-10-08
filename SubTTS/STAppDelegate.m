@@ -145,10 +145,10 @@ NSUInteger ttsLastSpokenSubtitle;
 }
 
 - (void) calculateNextSubtitle: (NSTimeInterval)currentTime {
-    NSUInteger newSubtitle = [loadedSubtitles nextSubtitle:currentTime];
-    STSubtitle *nextSub = [loadedSubtitles subtitleAtIndex:newSubtitle];
+    NSUInteger newSubtitle;
+    STSubtitle *nextSub = [loadedSubtitles nextSubtitle:currentTime index:&newSubtitle];
     ttsNextSubtitleTime = nextSub.start;
-    LOG(@"Next sub #%ld in %.1fs (%.1fs): %@", (unsigned long)newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime,
+    if (nextSub)  LOG(@"Next sub #%ld in %.1fs (%.1fs): %@", (unsigned long)newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime,
         nextSub.text);
     ttsNextSubtitle = newSubtitle;
 }
