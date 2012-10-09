@@ -12,7 +12,6 @@
     NSTimeInterval start;
     NSTimeInterval end;
     NSString* text;
-    NSSpeechSynthesizer* tts;
 }
 
 + (STSubtitle*) subtitle: (NSString*)subtext 
@@ -22,7 +21,6 @@
 @property NSTimeInterval start;
 @property NSTimeInterval end;
 @property NSString* text;
-@property (readonly) NSSpeechSynthesizer* tts;
 
 - (void) speak;
 
