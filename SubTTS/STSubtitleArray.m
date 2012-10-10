@@ -127,16 +127,28 @@
 
 // Parsing Subtitles
 
-#define SCANL(scanner,linenr) ([scanner scanString:@"\n" intoString:NULL] && (++linenr >= 0))
+#define SCANL(scanner,linenr) ([scanner scanString:linebreakString intoString:NULL] && (++linenr >= 0))
 #define SCANS(scanner,str) [scanner scanString:str intoString:NULL]
 
 - (NSMutableArray*) parseSubtitleString: (NSString*)subtitleString
                                   error: (NSError**)error
 {
-    subtitleString = [[subtitleString stringByReplacingOccurrencesOfString: @"\r\n" withString: @"\n"] 
-                      stringByReplacingOccurrencesOfString: @"\r" withString: @"\n"];
     NSScanner *scanner = [NSScanner scannerWithString: subtitleString];
     [scanner setCharactersToBeSkipped: [NSCharacterSet whitespaceCharacterSet]];
+    
+    // Auto-detect linebreakString
+    NSString *linebreakString = nil;
+    {
+        NSCharacterSet *newlineCharacterSet = [NSCharacterSet newlineCharacterSet];
+        BOOL ok = ([scanner scanUpToCharactersFromSet:newlineCharacterSet intoString:NULL] &&
+                   [scanner scanCharactersFromSet:newlineCharacterSet intoString:&linebreakString]);
+        if (ok == NO) {
+            WARN(@"Parse error in subtitle file: no line break found!");
+            linebreakString = @"\n";
+        }
+        [scanner setScanLocation:0];
+    }
+    
     NSCharacterSet *decimals = [NSCharacterSet characterSetWithCharactersInString: @"0123456789.,"];
     NSMutableArray *subtits = [NSMutableArray array];
     NSString *subtext;
@@ -157,7 +169,7 @@
                    [scanner scanInt:&endMinute] && SCANS(scanner,@":") &&
                    [scanner scanCharactersFromSet:decimals intoString:&endSecond] &&
                    SCANL(scanner,lineNr) &&
-                   [scanner scanUpToString:@"\n" intoString:&subtextline] && SCANL(scanner,lineNr)
+                   [scanner scanUpToString:linebreakString intoString:&subtextline] && SCANL(scanner,lineNr)
                    );
         if (!ok) {
             int CONTEXT = 20;
@@ -184,7 +196,7 @@
         }
         
         subtextLines = [NSMutableArray arrayWithObject:subtextline];
-        while ([scanner scanUpToString: @"\n" intoString: &subtextline] && SCANL(scanner,lineNr)) {
+        while ([scanner scanUpToString:linebreakString intoString:&subtextline] && SCANL(scanner,lineNr)) {
             [subtextLines addObject:subtextline];
         }
         subtext = [subtextLines componentsJoinedByString:subtextLineSeparator];
