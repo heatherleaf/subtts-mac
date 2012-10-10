@@ -139,7 +139,9 @@
     [scanner setCharactersToBeSkipped: [NSCharacterSet whitespaceCharacterSet]];
     NSCharacterSet *decimals = [NSCharacterSet characterSetWithCharactersInString: @"0123456789.,"];
     NSMutableArray *subtits = [NSMutableArray array];
-    NSMutableString *subtext;
+    NSString *subtext;
+    NSMutableArray *subtextLines;
+    NSString *subtextLineSeparator = @" | ";
     NSString *subtextline, *startSecond, *endSecond;
     int startHour, startMinute, endHour, endMinute, subtitleNr_, subtitleNr = 0;
     int lineNr = 1;
@@ -180,10 +182,13 @@
             WARN(@"Subtitle nr mismatch (line %d): got %d, expected %d", lineNr, subtitleNr_, subtitleNr);
             subtitleNr = subtitleNr_;
         }
-        subtext = [NSMutableString stringWithString:subtextline];
+        
+        subtextLines = [NSMutableArray arrayWithObject:subtextline];
         while ([scanner scanUpToString: @"\n" intoString: &subtextline] && SCANL(scanner,lineNr)) {
-            [subtext appendFormat:@" | %@", subtextline];
+            [subtextLines addObject:subtextline];
         }
+        subtext = [subtextLines componentsJoinedByString:subtextLineSeparator];
+        
         NSTimeInterval start = (startHour * 3600 + startMinute * 60 + 
                                 [[startSecond stringByReplacingOccurrencesOfString:@"," withString:@"."] doubleValue]);
         NSTimeInterval end = (endHour * 3600 + endMinute * 60 + 
