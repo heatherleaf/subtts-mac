@@ -133,8 +133,8 @@
 - (NSMutableArray*) parseSubtitleString: (NSString*)subtitleString
                                   error: (NSError**)error
 {
-    NSScanner *scanner = [NSScanner scannerWithString: subtitleString];
-    [scanner setCharactersToBeSkipped: [NSCharacterSet whitespaceCharacterSet]];
+    NSScanner *scanner = [NSScanner scannerWithString:subtitleString];
+    [scanner setCharactersToBeSkipped:[NSCharacterSet whitespaceCharacterSet]];
     
     // Auto-detect linebreakString
     NSString *linebreakString = nil;
@@ -149,7 +149,7 @@
         [scanner setScanLocation:0];
     }
     
-    NSCharacterSet *decimals = [NSCharacterSet characterSetWithCharactersInString: @"0123456789.,"];
+    NSCharacterSet *decimals = [NSCharacterSet characterSetWithCharactersInString:@"0123456789.,"];
     NSMutableArray *subtits = [NSMutableArray array];
     NSString *subtext;
     NSMutableArray *subtextLines;
@@ -205,7 +205,7 @@
                                 [[startSecond stringByReplacingOccurrencesOfString:@"," withString:@"."] doubleValue]);
         NSTimeInterval end = (endHour * 3600 + endMinute * 60 + 
                               [[endSecond stringByReplacingOccurrencesOfString:@"," withString:@"."] doubleValue]);
-        [subtits addObject: [STSubtitle subtitle:[self stripHtmlTags:subtext] start:start end:end]];
+        [subtits addObject:[STSubtitle subtitle:[self stripHtmlTags:subtext] start:start end:end]];
         while (SCANL(lineNr));
     }
     LOG(@"Read %d = %lu subtitles", subtitleNr, [subtits count]);
