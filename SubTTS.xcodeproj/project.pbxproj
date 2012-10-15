@@ -25,10 +25,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D0422D6414FD04C300557ADA /* STSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitle.h; sourceTree = "<group>"; };
-		D0422D6514FD04C300557ADA /* STSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitle.m; sourceTree = "<group>"; };
-		D0422D6B14FD138E00557ADA /* STSubtitleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitleArray.h; sourceTree = "<group>"; };
-		D0422D6C14FD138E00557ADA /* STSubtitleArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitleArray.m; sourceTree = "<group>"; };
+		D0422D6414FD04C300557ADA /* STSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitle.h; sourceTree = "<group>"; usesTabs = 0; };
+		D0422D6514FD04C300557ADA /* STSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitle.m; sourceTree = "<group>"; usesTabs = 0; };
+		D0422D6B14FD138E00557ADA /* STSubtitleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitleArray.h; sourceTree = "<group>"; usesTabs = 0; };
+		D0422D6C14FD138E00557ADA /* STSubtitleArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitleArray.m; sourceTree = "<group>"; usesTabs = 0; };
 		D04253FB14F645010010B4B2 /* DVDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDPlayer.h; sourceTree = "<group>"; };
 		D042540314F687000010B4B2 /* QuickTimePlayer7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickTimePlayer7.h; sourceTree = "<group>"; };
 		D0AF2FB614F57DB900B21603 /* SubTTS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SubTTS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,8 +41,8 @@
 		D0AF2FC614F57DB900B21603 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D0AF2FC814F57DB900B21603 /* SubTTS-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SubTTS-Prefix.pch"; sourceTree = "<group>"; };
 		D0AF2FCA14F57DB900B21603 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		D0AF2FCC14F57DB900B21603 /* STAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STAppDelegate.h; sourceTree = "<group>"; };
-		D0AF2FCD14F57DB900B21603 /* STAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STAppDelegate.m; sourceTree = "<group>"; };
+		D0AF2FCC14F57DB900B21603 /* STAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STAppDelegate.h; sourceTree = "<group>"; usesTabs = 0; };
+		D0AF2FCD14F57DB900B21603 /* STAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STAppDelegate.m; sourceTree = "<group>"; usesTabs = 0; };
 		D0AF2FD814F5848900B21603 /* VLC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLC.h; sourceTree = "<group>"; };
 		D0AF2FD914F5858600B21603 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScriptingBridge.framework; sourceTree = "<group>"; };
 		D0B28AFC14FE459B00865D7B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -50,17 +50,17 @@
 		D0B28B0B14FE58DE00865D7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D0B28B0D14FE58E900865D7B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D0B28B0E14FE5D2000865D7B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = sv; path = sv.lproj/Credits.rtf; sourceTree = "<group>"; };
-		D0D4381B14FA70B200F336C5 /* STPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPlayer.h; sourceTree = "<group>"; };
-		D0D4381C14FA70B200F336C5 /* STPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPlayer.m; sourceTree = "<group>"; };
-		D0D4382A14FA8AE400F336C5 /* STQuickTimePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STQuickTimePlayer.h; sourceTree = "<group>"; };
-		D0D4382B14FA8AE400F336C5 /* STQuickTimePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQuickTimePlayer.m; sourceTree = "<group>"; };
+		D0D4381B14FA70B200F336C5 /* STPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPlayer.h; sourceTree = "<group>"; usesTabs = 0; };
+		D0D4381C14FA70B200F336C5 /* STPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPlayer.m; sourceTree = "<group>"; usesTabs = 0; };
+		D0D4382A14FA8AE400F336C5 /* STQuickTimePlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STQuickTimePlayer.h; sourceTree = "<group>"; usesTabs = 0; };
+		D0D4382B14FA8AE400F336C5 /* STQuickTimePlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQuickTimePlayer.m; sourceTree = "<group>"; usesTabs = 0; };
 		D0D4386714FAD95700F336C5 /* QuickTimePlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QuickTimePlayer.h; sourceTree = "<group>"; };
-		D0D4386814FAE4B500F336C5 /* STVLCPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STVLCPlayer.h; sourceTree = "<group>"; };
-		D0D4386914FAE4B500F336C5 /* STVLCPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STVLCPlayer.m; sourceTree = "<group>"; };
-		D0F452E615036B0200813633 /* STQuickTime7Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STQuickTime7Player.h; sourceTree = "<group>"; };
-		D0F452E715036B0200813633 /* STQuickTime7Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQuickTime7Player.m; sourceTree = "<group>"; };
-		D0F452EA150379E500813633 /* STDVDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDVDPlayer.h; sourceTree = "<group>"; };
-		D0F452EB150379E600813633 /* STDVDPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDVDPlayer.m; sourceTree = "<group>"; };
+		D0D4386814FAE4B500F336C5 /* STVLCPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STVLCPlayer.h; sourceTree = "<group>"; usesTabs = 0; };
+		D0D4386914FAE4B500F336C5 /* STVLCPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STVLCPlayer.m; sourceTree = "<group>"; usesTabs = 0; };
+		D0F452E615036B0200813633 /* STQuickTime7Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STQuickTime7Player.h; sourceTree = "<group>"; usesTabs = 0; };
+		D0F452E715036B0200813633 /* STQuickTime7Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STQuickTime7Player.m; sourceTree = "<group>"; usesTabs = 0; };
+		D0F452EA150379E500813633 /* STDVDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STDVDPlayer.h; sourceTree = "<group>"; usesTabs = 0; };
+		D0F452EB150379E600813633 /* STDVDPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STDVDPlayer.m; sourceTree = "<group>"; usesTabs = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
