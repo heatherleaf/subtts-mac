@@ -181,13 +181,17 @@
                 afterError = [afterError substringToIndex: CONTEXT];
             WARN(@"Parse error in subtitle nr %d (line %d):\n%@<HERE>%@", 
                   subtitleNr, lineNr, beforeError, afterError);
-            *error = [[NSError alloc] initWithDomain: NSCocoaErrorDomain 
+            if (error != NULL) {
+				*error = [[NSError alloc] initWithDomain: NSCocoaErrorDomain
                                                 code: NSFileReadCorruptFileError 
                                             userInfo: nil];
-//            NSRunCriticalAlertPanel(@"Error in subtitle file", 
+			}
+            
+//            NSRunCriticalAlertPanel(@"Error in subtitle file",
 //                                    @"There was an error in subtitle nr %d (line %d):\n\n%@<HERE>%@", 
 //                                    @"Dismiss", nil, nil, 
 //                                    subtitleNr, lineNr, beforeError, afterError);
+            
             return nil;
         }
         if (subtitleNr != subtitleNr_) {
