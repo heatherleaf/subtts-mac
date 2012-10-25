@@ -7,7 +7,6 @@ to read the subtitles aloud while you are watching the movie.
 The program is a standalone "Menulet", a program that sits in the menu bar 
 and talks to your favourite video player. 
 Currently it supports Quicktime Player X, Quicktime Player 7, VLC Player, and DVD Player.
-
 It should work for Mac OSX 10.6 and above.
 
 License
