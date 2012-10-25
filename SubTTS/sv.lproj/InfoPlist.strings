@@ -1,0 +1,5 @@
+/* Localized versions of Info.plist keys */
+
+NSHumanReadableCopyright = "Copyright © 2012 Peter Ljunglöf. Licensierad under GNU General Public License v3.";
+CFBundleName = "Pratmakaren";
+CFBundleDisplayName = "Pratmakaren";

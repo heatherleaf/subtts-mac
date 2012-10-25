@@ -1,0 +1,23 @@
+//
+// Prefix header for all source files of the 'SubTTS' target in the 'SubTTS' project
+//
+
+#ifdef __OBJC__
+#import <Cocoa/Cocoa.h>
+
+#define PREFS [NSUserDefaults standardUserDefaults]
+
+#define ARRAY(...) [NSArray arrayWithObjects: __VA_ARGS__, nil]
+#define LINES(...) [[NSArray arrayWithObjects: __VA_ARGS__, nil] componentsJoinedByString:@"\n"] 
+#define CONCAT(str1,str2) [(str1) stringByAppendingString:(str2)]
+#define PADSTR(str,pad)   [(str) stringByPaddingToLength:(pad) withString:@" " startingAtIndex:0]
+
+#ifdef DEBUG
+#define LOG(...) NSLog(@"[%@ %@] %@", [self className], NSStringFromSelector(_cmd), [NSString stringWithFormat: __VA_ARGS__])
+#else
+#define LOG(...)
+#endif
+
+#define WARN(...) NSLog(@"[%@ %@] WARNING: %@", [self className], NSStringFromSelector(_cmd), [NSString stringWithFormat: __VA_ARGS__])
+
+#endif
