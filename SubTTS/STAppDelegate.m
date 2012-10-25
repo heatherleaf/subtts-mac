@@ -1,9 +1,9 @@
 //
 //  STAppDelegate.m
-//  SubTTS
+//  Part of SubTTS: Subtitles-to-speech
 //
-//  Created by peter ljunglöf on 2012-02-22.
-//  Copyright (c) 2012 göteborgs universtiet. All rights reserved.
+//  Created by Peter Ljunglöf on 2012-02-22.
+//  Copyright (C) 2012 Peter Ljunglöf. All rights reserved.
 //
 
 #import "STAppDelegate.h"
@@ -64,8 +64,8 @@ NSString* ttsCurrentMovieName;
 STSubtitleArray* loadedSubtitles;
 NSTimeInterval ttsLatestCurrentTime;
 NSTimeInterval ttsNextSubtitleTime;
-int ttsNextSubtitle;
-int ttsLastSpokenSubtitle;
+NSInteger ttsNextSubtitle;
+NSInteger ttsLastSpokenSubtitle;
 
 - (BOOL) timerIsActive {
     return ttsTimer ? [ttsTimer isValid] : NO;
@@ -145,9 +145,9 @@ int ttsLastSpokenSubtitle;
 }
 
 - (void) calculateNextSubtitle: (NSTimeInterval)currentTime {
-    int newSubtitle = [loadedSubtitles nextSubtitle:currentTime];
+    NSInteger newSubtitle = [loadedSubtitles nextSubtitle:currentTime];
     ttsNextSubtitleTime = [[loadedSubtitles subtitle:newSubtitle] start];
-    LOG(@"Next sub #%d in %.1fs (%.1fs): %@", newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime, 
+    LOG(@"Next sub #%ld in %.1fs (%.1fs): %@", newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime,
         [[loadedSubtitles subtitle:newSubtitle] text]);
     ttsNextSubtitle = newSubtitle;
 }
@@ -214,7 +214,7 @@ int ttsLastSpokenSubtitle;
 
 - (void) addMenu: (NSMenu*)menu 
        forPlayer: (STPlayer*)player 
-         atIndex: (int)ix 
+         atIndex: (NSInteger)ix
 {
     NSMenuItem* playerItem = [NSMenuItem new];
     [playerItem setState: ([player isFrontmost] ? NSOnState : NSOffState)];
@@ -252,8 +252,8 @@ int ttsLastSpokenSubtitle;
         [stopSpeaking setAction: @selector(stopTimer:)];
     }
     
-    int initial_items = [menu numberOfItems];
-    int nr;
+    NSInteger initial_items = [menu numberOfItems];
+    NSInteger nr;
     for (STPlayer* player in moviePlayers) {
         if ([player isLaunched]) {
             if ([player isFrontmost]) {

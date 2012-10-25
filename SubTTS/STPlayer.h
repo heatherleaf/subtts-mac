@@ -1,9 +1,9 @@
 //
 //  STMoviePlayer.h
-//  SubTTS
+//  Part of SubTTS: Subtitles-to-speech
 //
-//  Created by peter ljunglöf on 2012-02-26.
-//  Copyright (c) 2012 göteborgs universtiet. All rights reserved.
+//  Created by Peter Ljunglöf on 2012-02-26.
+//  Copyright (C) 2012 Peter Ljunglöf. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -18,9 +18,9 @@ typedef id STMovie;
 - (BOOL) isFrontmost;
 - (void) bringToFront: (id)sender;
 
-- (int) numberOfMovies;
+- (NSInteger) numberOfMovies;
 - (NSArray*) movies;
-- (STMovie) movieAtIndex: (int)nr;
+- (STMovie) movieAtIndex: (NSInteger)nr;
 - (STMovie) movieWithName: (NSString*)name;
 
 - (NSString*) nameOfMovie: (STMovie)movie;
@@ -42,7 +42,7 @@ typedef id STMovie;
 // Protected method
 @interface STPlayer ()
 
-- (NSTimeInterval) extrapolateCurrentTime: (int)currentSeconds 
+- (NSTimeInterval) extrapolateCurrentTime: (NSInteger)currentSeconds
                                 isPlaying: (BOOL)isPlaying;
 
 @end

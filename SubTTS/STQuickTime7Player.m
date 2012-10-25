@@ -1,9 +1,9 @@
 //
 //  STQuickTime7Player.m
-//  SubTTS
+//  Part of SubTTS: Subtitles-to-speech
 //
-//  Created by peter ljunglöf on 2012-03-04.
-//  Copyright (c) 2012 göteborgs universtiet. All rights reserved.
+//  Created by Peter Ljunglöf on 2012-03-04.
+//  Copyright (C) 2012 Peter Ljunglöf. All rights reserved.
 //
 
 #import "STQuickTime7Player.h"
@@ -21,7 +21,7 @@
     return BundleID; 
 }
 
-- (int) numberOfMovies {
+- (NSInteger) numberOfMovies {
     return [[self getMovies] count];
 }
 
@@ -29,7 +29,7 @@
     return [self getMovies];
 }
 
-- (QuickTimePlayer7Document*) movieAtIndex: (int)nr { 
+- (QuickTimePlayer7Document*) movieAtIndex: (NSInteger)nr {
     return [[self getMovies] objectAtIndex:nr];
 }
 

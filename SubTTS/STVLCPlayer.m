@@ -1,9 +1,9 @@
 //
 //  STVLCPlayer.m
-//  SubTTS
+//  Part of SubTTS: Subtitles-to-speech
 //
-//  Created by peter ljunglöf on 2012-02-26.
-//  Copyright (c) 2012 göteborgs universtiet. All rights reserved.
+//  Created by Peter Ljunglöf on 2012-02-26.
+//  Copyright (C) 2012 Peter Ljunglöf. All rights reserved.
 //
 
 #import "STVLCPlayer.h"
@@ -23,7 +23,7 @@
 
 #define HASMOVIE ([[self getPlayer] durationOfCurrentItem] > 0)
 
-- (int) numberOfMovies {
+- (NSInteger) numberOfMovies {
     if (HASMOVIE)
         return 1;
     else
@@ -44,7 +44,7 @@
     }
 }
 
-- (VLCApplication*) movieAtIndex: (int)nr { 
+- (VLCApplication*) movieAtIndex: (NSInteger)nr {
     if (nr == 0 && HASMOVIE)
         return [self getPlayer];
     else 
