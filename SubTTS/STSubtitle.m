@@ -10,7 +10,7 @@
 
 @implementation STSubtitle
 
-@synthesize start, end, text, tts;
+@synthesize start, end, text;
 
 + (STSubtitle*) subtitle: (NSString*)subtext
                    start: (NSTimeInterval)substart
@@ -24,10 +24,7 @@
 }
 
 - (void) speak {
-    if (!tts) {
-        tts = [NSSpeechSynthesizer new];
-        // [tts setDelegate: self];
-    }
+	NSSpeechSynthesizer* tts = [NSSpeechSynthesizer new];
     LOG(@"Starting speaking: %@", text);
     [tts startSpeakingString: text];
 }

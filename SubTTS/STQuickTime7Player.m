@@ -21,7 +21,7 @@
     return BundleID; 
 }
 
-- (NSInteger) numberOfMovies {
+- (NSUInteger) numberOfMovies {
     return [[self getMovies] count];
 }
 
@@ -29,7 +29,7 @@
     return [self getMovies];
 }
 
-- (QuickTimePlayer7Document*) movieAtIndex: (NSInteger)nr {
+- (QuickTimePlayer7Document*) movieAtIndex: (NSUInteger)nr { 
     return [[self getMovies] objectAtIndex:nr];
 }
 
@@ -53,8 +53,10 @@
     return [movie duration];
 }
 
-- (NSTimeInterval) currentTimeOfMovie: (QuickTimePlayer7Document*)movie { 
-    return [self extrapolateCurrentTime:[movie currentTime] isPlaying:[movie playing]];
+- (NSTimeInterval) currentTimeOfMovie: (QuickTimePlayer7Document*)movie {
+    NSInteger currentTime = [movie currentTime];
+    NSInteger timeScale = [movie timeScale];
+    return ((NSTimeInterval)currentTime/timeScale);
 }
 
 - (BOOL) isPlayingMovie: (QuickTimePlayer7Document*)movie { 
