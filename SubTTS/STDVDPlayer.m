@@ -23,7 +23,7 @@
 
 #define HASMOVIE ([[self getPlayer] hasMedia])
 
-- (NSInteger) numberOfMovies {
+- (NSUInteger) numberOfMovies {
     if (HASMOVIE)
         return 1;
     else
@@ -44,7 +44,7 @@
     }
 }
 
-- (DVDPlayerApplication*) movieAtIndex: (NSInteger)nr {
+- (DVDPlayerApplication*) movieAtIndex: (NSUInteger)nr { 
     if (nr == 0 && HASMOVIE)
         return [self getPlayer];
     else 

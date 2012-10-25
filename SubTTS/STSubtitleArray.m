@@ -13,37 +13,43 @@
 - (id) init {
     self = [super init];
     subtitles = [NSMutableArray array];
-    initialSubtitle = [STSubtitle subtitle:[NSArray array] start:-MAXFLOAT end:-MAXFLOAT];
-    finalSubtitle = [STSubtitle subtitle:[NSArray array] start:MAXFLOAT end:MAXFLOAT];
     return self;
 }
 
-- (NSInteger) count {
+- (NSUInteger) count {
     return [subtitles count];
 }
 
-- (STSubtitle*) subtitle: (NSInteger)nr {
-    if (nr < 0)
-        return initialSubtitle;
-    else if (nr >= [subtitles count]) 
-        return finalSubtitle;
+- (STSubtitle*) subtitleAtIndex: (NSUInteger)nr {
+    if (nr >= [subtitles count]) 
+        return [subtitles lastObject];
     else 
         return [subtitles objectAtIndex:nr];
 }
 
-- (NSInteger) nextSubtitle: (NSTimeInterval)now {
-    NSInteger low = 0;
-    NSInteger high = [subtitles count];
+- (STSubtitle *) nextSubtitle: (NSTimeInterval)now index:(NSUInteger *)index {
+    STSubtitle *lastSubtitle = [subtitles lastObject];
+    if (now > lastSubtitle.start) {
+        if (index != NULL)  *index = NSNotFound;
+        return nil;
+    }
+    
+    NSUInteger low = 0;
+    NSUInteger high = [subtitles count];
+    
     while (low < high) {
-        NSInteger mid = (low + high) / 2;
-        STSubtitle* sub = [subtitles objectAtIndex:mid];
+        NSUInteger mid = (low + high) >> 1;
+        STSubtitle *sub = [subtitles objectAtIndex:mid];
+        
         if (now < sub.start) {
             high = mid;
         } else {
             low = mid + 1;
         }
     }
-    return low;
+    
+    if (index != NULL)  *index = low;
+    return [self subtitleAtIndex:low];
 }
 
 - (void) addSubtitle: (NSString*)text 
@@ -121,77 +127,101 @@
 
 // Parsing Subtitles
 
-#define SCANL(scanner,linenr) ([scanner scanString:@"\n" intoString:NULL] && (++linenr >= 0))
-#define SCANS(scanner,str) [scanner scanString:str intoString:NULL]
+#define SCANL(linenr) ([scanner scanString:linebreakString intoString:NULL] && (++linenr >= 0))
+#define SCANS(str) [scanner scanString:str intoString:NULL]
 
 - (NSMutableArray*) parseSubtitleString: (NSString*)subtitleString
                                   error: (NSError**)error
 {
-    subtitleString = [[subtitleString stringByReplacingOccurrencesOfString: @"\r\n" withString: @"\n"] 
-                      stringByReplacingOccurrencesOfString: @"\r" withString: @"\n"];
-    NSScanner *scanner = [NSScanner scannerWithString: subtitleString];
-    [scanner setCharactersToBeSkipped: [NSCharacterSet whitespaceCharacterSet]];
-    NSCharacterSet *decimals = [NSCharacterSet characterSetWithCharactersInString: @"0123456789.,"];
+    NSScanner *scanner = [NSScanner scannerWithString:subtitleString];
+    [scanner setCharactersToBeSkipped:[NSCharacterSet whitespaceCharacterSet]];
+    
+    // Auto-detect linebreakString
+    NSString *linebreakString = nil;
+    {
+        NSCharacterSet *newlineCharacterSet = [NSCharacterSet newlineCharacterSet];
+        BOOL ok = ([scanner scanUpToCharactersFromSet:newlineCharacterSet intoString:NULL] &&
+                   [scanner scanCharactersFromSet:newlineCharacterSet intoString:&linebreakString]);
+        if (ok == NO) {
+            WARN(@"Parse error in subtitle file: no line break found!");
+            linebreakString = @"\n";
+        }
+        [scanner setScanLocation:0];
+    }
+    
+    NSCharacterSet *decimals = [NSCharacterSet characterSetWithCharactersInString:@"0123456789.,"];
     NSMutableArray *subtits = [NSMutableArray array];
-    NSMutableString *subtext;
+    NSString *subtext;
+    NSMutableArray *subtextLines;
+    NSString *subtextLineSeparator = @" | ";
     NSString *subtextline, *startSecond, *endSecond;
-    NSInteger startHour, startMinute, endHour, endMinute, subtitleNr_, subtitleNr = 0;
-    NSInteger lineNr = 1;
-    while (SCANL(scanner,lineNr));
+    int startHour, startMinute, endHour, endMinute, subtitleNr_, subtitleNr = 0;
+    int lineNr = 1;
+    while (SCANL(lineNr));
     while (! [scanner isAtEnd]) {
         subtitleNr++;
-        BOOL ok = ([scanner scanInteger:&subtitleNr_] && SCANL(scanner,lineNr) &&
-                   [scanner scanInteger:&startHour] && SCANS(scanner,@":") &&
-                   [scanner scanInteger:&startMinute] && SCANS(scanner,@":") &&
+        BOOL ok = ([scanner scanInt:&subtitleNr_] && SCANL(lineNr) &&
+                   [scanner scanInt:&startHour] && SCANS(@":") &&
+                   [scanner scanInt:&startMinute] && SCANS(@":") &&
                    [scanner scanCharactersFromSet:decimals intoString:&startSecond] &&
-                   SCANS(scanner,@"-->") &&
-                   [scanner scanInteger:&endHour] && SCANS(scanner,@":") &&
-                   [scanner scanInteger:&endMinute] && SCANS(scanner,@":") &&
+                   SCANS(@"-->") &&
+                   [scanner scanInt:&endHour] && SCANS(@":") &&
+                   [scanner scanInt:&endMinute] && SCANS(@":") &&
                    [scanner scanCharactersFromSet:decimals intoString:&endSecond] &&
-                   SCANL(scanner,lineNr) &&
-                   [scanner scanUpToString:@"\n" intoString:&subtextline] && SCANL(scanner,lineNr)
+                   SCANL(lineNr) &&
+                   [scanner scanUpToString:linebreakString intoString:&subtextline] && SCANL(lineNr)
                    );
         if (!ok) {
-            NSInteger CONTEXT = 20;
+            int CONTEXT = 20;
             NSString *beforeError = [subtitleString substringToIndex: [scanner scanLocation]];
             if ([beforeError length] > CONTEXT) 
                 beforeError = [beforeError substringFromIndex: [beforeError length]-CONTEXT];
             NSString *afterError = [subtitleString substringFromIndex: [scanner scanLocation]];
             if ([afterError length] > CONTEXT) 
                 afterError = [afterError substringToIndex: CONTEXT];
-            WARN(@"Parse error in subtitle nr %ld (line %ld):\n%@<HERE>%@", 
+            WARN(@"Parse error in subtitle nr %d (line %d):\n%@<HERE>%@", 
                   subtitleNr, lineNr, beforeError, afterError);
-            *error = [[NSError alloc] initWithDomain: NSCocoaErrorDomain 
+            if (error != NULL) {
+				*error = [[NSError alloc] initWithDomain: NSCocoaErrorDomain
                                                 code: NSFileReadCorruptFileError 
                                             userInfo: nil];
-//            NSRunCriticalAlertPanel(@"Error in subtitle file", 
+			}
+            
+//            NSRunCriticalAlertPanel(@"Error in subtitle file",
 //                                    @"There was an error in subtitle nr %d (line %d):\n\n%@<HERE>%@", 
 //                                    @"Dismiss", nil, nil, 
 //                                    subtitleNr, lineNr, beforeError, afterError);
+            
             return nil;
         }
         if (subtitleNr != subtitleNr_) {
-            WARN(@"Subtitle nr mismatch (line %ld): got %ld, expected %ld", lineNr, subtitleNr_, subtitleNr);
+            WARN(@"Subtitle nr mismatch (line %d): got %d, expected %d", lineNr, subtitleNr_, subtitleNr);
             subtitleNr = subtitleNr_;
         }
-        subtext = [NSMutableString stringWithString:subtextline];
-        while ([scanner scanUpToString: @"\n" intoString: &subtextline] && SCANL(scanner,lineNr)) {
-            [subtext appendFormat:@" | %@", subtextline];
+        
+        subtextLines = [NSMutableArray arrayWithObject:subtextline];
+        while ([scanner scanUpToString:linebreakString intoString:&subtextline] && SCANL(lineNr)) {
+            [subtextLines addObject:subtextline];
         }
+        subtext = [subtextLines componentsJoinedByString:subtextLineSeparator];
+        
         NSTimeInterval start = (startHour * 3600 + startMinute * 60 + 
                                 [[startSecond stringByReplacingOccurrencesOfString:@"," withString:@"."] doubleValue]);
         NSTimeInterval end = (endHour * 3600 + endMinute * 60 + 
                               [[endSecond stringByReplacingOccurrencesOfString:@"," withString:@"."] doubleValue]);
-        [subtits addObject: [STSubtitle subtitle:[self stripHtmlTags:subtext] start:start end:end]];
-        while (SCANL(scanner,lineNr));
+        [subtits addObject:[STSubtitle subtitle:[self stripHtmlTags:subtext] start:start end:end]];
+        while (SCANL(lineNr));
     }
-    LOG(@"Read %ld = %lu subtitles", subtitleNr, [subtits count]);
+    LOG(@"Read %d = %lu subtitles", subtitleNr, [subtits count]);
     STSubtitle* sub = [subtits objectAtIndex:0];
     LOG(@"FIRST: start=%.1f, end=%.1f, text='%@'", sub.start, sub.end, sub.text);
     sub = [subtits lastObject];
     LOG(@"LAST: start=%.1f, end=%.1f, text='%@'", sub.start, sub.end, sub.text);
     return subtits;
 }
+
+#undef SCANL
+#undef SCANS
 
 - (NSString*) stripHtmlTags: (NSString*)html {
     NSString *stripped = html;

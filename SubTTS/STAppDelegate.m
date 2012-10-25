@@ -64,8 +64,8 @@ NSString* ttsCurrentMovieName;
 STSubtitleArray* loadedSubtitles;
 NSTimeInterval ttsLatestCurrentTime;
 NSTimeInterval ttsNextSubtitleTime;
-NSInteger ttsNextSubtitle;
-NSInteger ttsLastSpokenSubtitle;
+NSUInteger ttsNextSubtitle;
+NSUInteger ttsLastSpokenSubtitle;
 
 - (BOOL) timerIsActive {
     return ttsTimer ? [ttsTimer isValid] : NO;
@@ -138,17 +138,18 @@ NSInteger ttsLastSpokenSubtitle;
             ttsLastSpokenSubtitle = ttsNextSubtitle;
             NSTimeInterval diff = ttsNextSubtitleTime - currentTime;
             if (diff > 0) usleep(diff * 1000000 / 2);
-            [[loadedSubtitles subtitle:ttsNextSubtitle] speak];
+            [[loadedSubtitles subtitleAtIndex:ttsNextSubtitle] speak];
         }
         ttsLatestCurrentTime = currentTime;
     }
 }
 
 - (void) calculateNextSubtitle: (NSTimeInterval)currentTime {
-    NSInteger newSubtitle = [loadedSubtitles nextSubtitle:currentTime];
-    ttsNextSubtitleTime = [[loadedSubtitles subtitle:newSubtitle] start];
-    LOG(@"Next sub #%ld in %.1fs (%.1fs): %@", newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime,
-        [[loadedSubtitles subtitle:newSubtitle] text]);
+    NSUInteger newSubtitle;
+    STSubtitle *nextSub = [loadedSubtitles nextSubtitle:currentTime index:&newSubtitle];
+    ttsNextSubtitleTime = nextSub.start;
+    if (nextSub)  LOG(@"Next sub #%ld in %.1fs (%.1fs): %@", (unsigned long)newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime,
+        nextSub.text);
     ttsNextSubtitle = newSubtitle;
 }
 
@@ -214,7 +215,7 @@ NSInteger ttsLastSpokenSubtitle;
 
 - (void) addMenu: (NSMenu*)menu 
        forPlayer: (STPlayer*)player 
-         atIndex: (NSInteger)ix
+         atIndex: (NSUInteger)ix
 {
     NSMenuItem* playerItem = [NSMenuItem new];
     [playerItem setState: ([player isFrontmost] ? NSOnState : NSOffState)];
@@ -248,12 +249,18 @@ NSInteger ttsLastSpokenSubtitle;
 
     BOOL isSpeaking = [self timerIsActive];
     if (isSpeaking) {
+        [startSpeaking setEnabled:NO];
+        [stopSpeaking setEnabled:YES];
         [stopSpeaking setTitle: [NSString stringWithFormat: NSLocalizedString(@"Stop speaking %@",nil), ttsCurrentMovieName]];
         [stopSpeaking setAction: @selector(stopTimer:)];
     }
+    else {
+        [startSpeaking setEnabled:YES];
+        [stopSpeaking setEnabled:NO];
+    }
     
-    NSInteger initial_items = [menu numberOfItems];
-    NSInteger nr;
+    NSUInteger initial_items = [menu numberOfItems];
+    NSUInteger nr;
     for (STPlayer* player in moviePlayers) {
         if ([player isLaunched]) {
             if ([player isFrontmost]) {

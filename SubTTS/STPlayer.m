@@ -13,9 +13,9 @@
 - (NSString*) title { return nil; }
 - (NSString*) bundleID { return nil; }
 
-- (NSInteger) numberOfMovies { return 0; }
+- (NSUInteger) numberOfMovies { return 0; }
 - (NSArray*) movies { return nil; }
-- (id) movieAtIndex: (NSInteger)nr { return nil; }
+- (id) movieAtIndex: (NSUInteger)nr { return nil; }
 - (id) movieWithName: (NSString*)name { return nil; }
 
 - (NSString*) nameOfMovie: (id)movie { return nil; }
@@ -61,7 +61,7 @@
 
 // Some players only give currentTime as integers
 // We guess the fraction by extrapolation from the previous invocation
-- (NSTimeInterval) extrapolateCurrentTime: (NSInteger)currentSeconds
+- (NSTimeInterval) extrapolateCurrentTime: (NSUInteger)currentSeconds 
                                 isPlaying: (BOOL)isPlaying 
 {
     static NSTimeInterval lastTime = -1;
@@ -84,8 +84,12 @@
             else 
                 currentTime = currentSeconds;
         }
-        // if (isPlaying) LOG(@"%2d..%2d: (%5.2f) %5.2f = %5.2f", lastSeconds, currentSeconds, 
-        //                    timeSinceLastInvocation, lastTime + timeSinceLastInvocation, currentTime);
+#if 0
+        if (isPlaying) LOG(@"%2ld..%2lu: (%5.2f) %5.2f = %5.2f",
+						   (long)lastSeconds, (unsigned long)currentSeconds,
+                           timeSinceLastInvocation,
+						   lastTime + timeSinceLastInvocation, currentTime);
+#endif
     }
     lastTime = currentTime;
     lastSeconds = currentSeconds;

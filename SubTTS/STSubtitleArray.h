@@ -11,13 +11,11 @@
 
 @interface STSubtitleArray : NSObject {
     NSMutableArray* subtitles;
-    STSubtitle* initialSubtitle;
-    STSubtitle* finalSubtitle;
 }
 
-- (NSInteger) count;
-- (STSubtitle*) subtitle: (NSInteger)nr;
-- (NSInteger) nextSubtitle: (NSTimeInterval)now;
+- (NSUInteger) count;
+- (STSubtitle*) subtitleAtIndex: (NSUInteger)nr;
+- (STSubtitle *) nextSubtitle: (NSTimeInterval)now index:(NSUInteger *)index;
 
 - (void) addSubtitle: (NSString*)text 
                start: (NSTimeInterval)start

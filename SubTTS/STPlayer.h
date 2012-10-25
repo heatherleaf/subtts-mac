@@ -18,9 +18,9 @@ typedef id STMovie;
 - (BOOL) isFrontmost;
 - (void) bringToFront: (id)sender;
 
-- (NSInteger) numberOfMovies;
+- (NSUInteger) numberOfMovies;
 - (NSArray*) movies;
-- (STMovie) movieAtIndex: (NSInteger)nr;
+- (STMovie) movieAtIndex: (NSUInteger)nr;
 - (STMovie) movieWithName: (NSString*)name;
 
 - (NSString*) nameOfMovie: (STMovie)movie;
@@ -42,7 +42,7 @@ typedef id STMovie;
 // Protected method
 @interface STPlayer ()
 
-- (NSTimeInterval) extrapolateCurrentTime: (NSInteger)currentSeconds
+- (NSTimeInterval) extrapolateCurrentTime: (NSUInteger)currentSeconds 
                                 isPlaying: (BOOL)isPlaying;
 
 @end
