@@ -20,6 +20,8 @@
 	<string>0.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.video</string>
 	<key>LSHasLocalizedDisplayName</key>
 	<true/>
 	<key>LSMinimumSystemVersion</key>
