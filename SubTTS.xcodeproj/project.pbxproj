@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DBED188163B09F300DC046C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBED187163B09F300DC046C /* ScriptingBridge.framework */; };
 		D0422D6614FD04C300557ADA /* STSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = D0422D6514FD04C300557ADA /* STSubtitle.m */; };
 		D0422D6D14FD138E00557ADA /* STSubtitleArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D0422D6C14FD138E00557ADA /* STSubtitleArray.m */; };
 		D0AF2FBB14F57DB900B21603 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AF2FBA14F57DB900B21603 /* Cocoa.framework */; };
@@ -14,7 +15,6 @@
 		D0AF2FC714F57DB900B21603 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AF2FC614F57DB900B21603 /* main.m */; };
 		D0AF2FCB14F57DB900B21603 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = D0AF2FC914F57DB900B21603 /* Credits.rtf */; };
 		D0AF2FCE14F57DB900B21603 /* STAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D0AF2FCD14F57DB900B21603 /* STAppDelegate.m */; };
-		D0AF2FDA14F5858600B21603 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AF2FD914F5858600B21603 /* ScriptingBridge.framework */; };
 		D0B28AFD14FE459B00865D7B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0B28AFB14FE459B00865D7B /* MainMenu.xib */; };
 		D0B28B0A14FE58DE00865D7B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0B28B0C14FE58DE00865D7B /* Localizable.strings */; };
 		D0D4381D14FA70B200F336C5 /* STPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4381C14FA70B200F336C5 /* STPlayer.m */; };
@@ -25,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3DBED187163B09F300DC046C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		D0422D6414FD04C300557ADA /* STSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitle.h; sourceTree = "<group>"; usesTabs = 0; };
 		D0422D6514FD04C300557ADA /* STSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitle.m; sourceTree = "<group>"; usesTabs = 0; };
 		D0422D6B14FD138E00557ADA /* STSubtitleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitleArray.h; sourceTree = "<group>"; usesTabs = 0; };
@@ -44,7 +45,6 @@
 		D0AF2FCC14F57DB900B21603 /* STAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = STAppDelegate.h; sourceTree = "<group>"; usesTabs = 0; };
 		D0AF2FCD14F57DB900B21603 /* STAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = STAppDelegate.m; sourceTree = "<group>"; usesTabs = 0; };
 		D0AF2FD814F5848900B21603 /* VLC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VLC.h; sourceTree = "<group>"; };
-		D0AF2FD914F5858600B21603 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ScriptingBridge.framework; sourceTree = "<group>"; };
 		D0B28AFC14FE459B00865D7B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		D0B28B0614FE535500865D7B /* sv */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = sv; path = sv.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D0B28B0B14FE58DE00865D7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -68,8 +68,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBED188163B09F300DC046C /* ScriptingBridge.framework in Frameworks */,
 				D0AF2FBB14F57DB900B21603 /* Cocoa.framework in Frameworks */,
-				D0AF2FDA14F5858600B21603 /* ScriptingBridge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,7 +107,7 @@
 		D0AF2FB914F57DB900B21603 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D0AF2FD914F5858600B21603 /* ScriptingBridge.framework */,
+				3DBED187163B09F300DC046C /* ScriptingBridge.framework */,
 				D0AF2FBA14F57DB900B21603 /* Cocoa.framework */,
 				D0AF2FBC14F57DB900B21603 /* Other Frameworks */,
 			);
