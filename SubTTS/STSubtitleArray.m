@@ -14,7 +14,9 @@
 
 - (id) init {
     self = [super init];
-    subtitles = [NSMutableArray array];
+    if (self) {
+        subtitles = [NSMutableArray array];
+    }
     return self;
 }
 
