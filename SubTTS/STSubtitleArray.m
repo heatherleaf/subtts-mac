@@ -8,6 +8,8 @@
 
 #import "STSubtitleArray.h"
 
+#import <UniversalDetector/UniversalDetector.h>
+
 @implementation STSubtitleArray
 
 - (id) init {
@@ -62,6 +64,7 @@
 - (BOOL) loadFromURL: (NSURL*)url 
                error: (NSError**)error 
 {
+#if 0
     NSStringEncoding encoding = [STSubtitleArray encodingOfFile: url];
     LOG(@"Trying encoding %lu for URL: %@", encoding, url);
     if ([self loadFromURL:url encoding:encoding error:error])
@@ -71,6 +74,29 @@
     encoding = NSISOLatin1StringEncoding;
     LOG(@"Trying default encoding %lu for URL: %@", encoding, url);
     return [self loadFromURL:url encoding:encoding error:error];
+#else
+    NSStringEncoding encoding;
+    
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    // Guess encoding
+	UniversalDetector *detector = [UniversalDetector new];
+    [detector analyzeData:data];
+    encoding = [detector encoding];
+    
+    NSString *string = [[NSString alloc] initWithData:data encoding:encoding];
+    
+#if 1 && DEBUG
+    CFStringEncoding cfStringEncoding = CFStringConvertNSStringEncodingToEncoding(encoding);
+    CFStringRef cfStringEncodingName =  CFStringGetNameOfEncoding(cfStringEncoding);
+    NSString *encodingName = (__bridge NSString *)cfStringEncodingName;
+    float confidence = [detector confidence] * 100.0f;
+    LOG(@"Used encoding %@ with confidence: %.1f%% for URL: %@", encodingName, confidence, url);
+#endif
+
+    return [self loadFromString:string error:error];
+
+#endif
 }
 
 - (BOOL) loadFromURL: (NSURL*)url
@@ -80,16 +106,29 @@
     NSString* string = [NSString stringWithContentsOfURL: url
                                                 encoding: encoding
                                                    error: error];
+    
     if (string) {
-        NSMutableArray* subs = [self parseSubtitleString: string
-                                                   error: error];
-        if (subs) {
-            subtitles = subs;
-            return YES;
-        } 
+        [self loadFromString: string error: error];
+        return YES;
     }
-    WARN(@"Error code %ld: %@", [*error code], [*error localizedFailureReason]);
-    return NO;
+    else {
+        WARN(@"Error code %ld: %@", [*error code], [*error localizedFailureReason]);
+        return NO;
+    }
+}
+
+- (BOOL) loadFromString: (NSString *)string
+                  error: (NSError**)error {
+    NSMutableArray* subs = [self parseSubtitleString: string
+                                               error: error];
+    if (subs) {
+        subtitles = subs;
+        return YES;
+    }
+    else {
+        WARN(@"Error code %ld: %@", [*error code], [*error localizedFailureReason]);
+        return NO;
+    }
 }
 
 + (NSStringEncoding) encodingOfFile: (NSURL*)file {
@@ -121,7 +160,7 @@
     else if ([output hasSuffix:@"=utf-16le"])
         return NSUTF16LittleEndianStringEncoding;
     WARN(@"Unrecogniezd output from '%@': %@", [task launchPath], output);
-    return NO;
+    return NSASCIIStringEncoding;
 }
 
 

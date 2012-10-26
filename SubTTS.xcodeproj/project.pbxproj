@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3DBED188163B09F300DC046C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBED187163B09F300DC046C /* ScriptingBridge.framework */; };
+		3DBED1C2163B1E5000DC046C /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBED1BD163B1E3E00DC046C /* UniversalDetector.framework */; };
+		3DBED1C4163B1E6000DC046C /* UniversalDetector.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBED1BD163B1E3E00DC046C /* UniversalDetector.framework */; };
 		D0422D6614FD04C300557ADA /* STSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = D0422D6514FD04C300557ADA /* STSubtitle.m */; };
 		D0422D6D14FD138E00557ADA /* STSubtitleArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D0422D6C14FD138E00557ADA /* STSubtitleArray.m */; };
 		D0AF2FBB14F57DB900B21603 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AF2FBA14F57DB900B21603 /* Cocoa.framework */; };
@@ -24,8 +26,47 @@
 		D0F452EC150379E600813633 /* STDVDPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0F452EB150379E600813633 /* STDVDPlayer.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3DBED1BC163B1E3E00DC046C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8DC2EF5B0486A6940098B216;
+			remoteInfo = UniversalDetector;
+		};
+		3DBED1BE163B1E3E00DC046C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1B0DDCAB0A2D0AD10009B697;
+			remoteInfo = DetectorTest;
+		};
+		3DBED1C0163B1E4C00DC046C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
+			remoteInfo = UniversalDetector;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3DBED1C3163B1E5500DC046C /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				3DBED1C4163B1E6000DC046C /* UniversalDetector.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		3DBED187163B09F300DC046C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UniversalDetector.xcodeproj; path = External/UniversalDetector/UniversalDetector.xcodeproj; sourceTree = "<group>"; };
 		D0422D6414FD04C300557ADA /* STSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitle.h; sourceTree = "<group>"; usesTabs = 0; };
 		D0422D6514FD04C300557ADA /* STSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitle.m; sourceTree = "<group>"; usesTabs = 0; };
 		D0422D6B14FD138E00557ADA /* STSubtitleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitleArray.h; sourceTree = "<group>"; usesTabs = 0; };
@@ -68,6 +109,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DBED1C2163B1E5000DC046C /* UniversalDetector.framework in Frameworks */,
 				3DBED188163B09F300DC046C /* ScriptingBridge.framework in Frameworks */,
 				D0AF2FBB14F57DB900B21603 /* Cocoa.framework in Frameworks */,
 			);
@@ -76,6 +118,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3DBED1B8163B1E3E00DC046C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DBED1BD163B1E3E00DC046C /* UniversalDetector.framework */,
+				3DBED1BF163B1E3E00DC046C /* DetectorTest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		D0422D6214FD04A000557ADA /* Subtitles */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +158,7 @@
 		D0AF2FB914F57DB900B21603 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */,
 				3DBED187163B09F300DC046C /* ScriptingBridge.framework */,
 				D0AF2FBA14F57DB900B21603 /* Cocoa.framework */,
 				D0AF2FBC14F57DB900B21603 /* Other Frameworks */,
@@ -189,10 +241,12 @@
 				D0AF2FB214F57DB900B21603 /* Sources */,
 				D0AF2FB314F57DB900B21603 /* Frameworks */,
 				D0AF2FB414F57DB900B21603 /* Resources */,
+				3DBED1C3163B1E5500DC046C /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3DBED1C1163B1E4C00DC046C /* PBXTargetDependency */,
 			);
 			name = SubTTS;
 			productName = SubTTS;
@@ -220,12 +274,35 @@
 			mainGroup = D0AF2FAB14F57DB900B21603;
 			productRefGroup = D0AF2FB714F57DB900B21603 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3DBED1B8163B1E3E00DC046C /* Products */;
+					ProjectRef = 3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D0AF2FB514F57DB900B21603 /* SubTTS */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3DBED1BD163B1E3E00DC046C /* UniversalDetector.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = UniversalDetector.framework;
+			remoteRef = 3DBED1BC163B1E3E00DC046C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3DBED1BF163B1E3E00DC046C /* DetectorTest */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = DetectorTest;
+			remoteRef = 3DBED1BE163B1E3E00DC046C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D0AF2FB414F57DB900B21603 /* Resources */ = {
@@ -259,6 +336,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3DBED1C1163B1E4C00DC046C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = UniversalDetector;
+			targetProxy = 3DBED1C0163B1E4C00DC046C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		D0AF2FC314F57DB900B21603 /* InfoPlist.strings */ = {
@@ -350,6 +435,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SubTTS/SubTTS-Prefix.pch";
 				INFOPLIST_FILE = "SubTTS/SubTTS-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -363,6 +449,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SubTTS/SubTTS-Prefix.pch";
 				INFOPLIST_FILE = "SubTTS/SubTTS-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = NO;
