@@ -28,6 +28,9 @@
             encoding: (NSStringEncoding)encoding 
                error: (NSError**)error;
 
+- (BOOL) loadFromString: (NSString *)string
+                  error: (NSError**)error;
+
 + (NSStringEncoding) encodingOfFile: (NSURL*)file;
 
 @end
