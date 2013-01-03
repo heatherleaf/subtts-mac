@@ -9,8 +9,8 @@ and talks to your favourite video player.
 Currently it supports Quicktime Player X, Quicktime Player 7, VLC Player, and DVD Player.
 It should work for Mac OSX 10.6 and above.
 
-Usage
------
+Installation
+------------
 
 	git clone ... (or use GitHub.app)
 	cd subtts-mac
@@ -22,7 +22,9 @@ Hit `Command-R` to build and run the project in Xcode. You need the free Xcode f
 License
 -------
 
-SubTTS is open-source and released under GNU General Public License, version 3.0 or above.
+SubTTS is open-source and released under a dual GPL/BSD license:
+- GNU General Public License, version 3.0 or above. See COPYING.GNU for details.
+- The Simplified BSD License. See COPYING.BSD for details.
 
 Windows/Linux version
 ---------------------
