@@ -66,17 +66,6 @@
 - (BOOL) loadFromURL: (NSURL*)url 
                error: (NSError**)error 
 {
-#if 0
-    NSStringEncoding encoding = [STSubtitleArray encodingOfFile: url];
-    LOG(@"Trying encoding %lu for URL: %@", encoding, url);
-    if ([self loadFromURL:url encoding:encoding error:error])
-        return YES;
-    if ([*error code] != NSFileReadInapplicableStringEncodingError)
-        return NO;
-    encoding = NSISOLatin1StringEncoding;
-    LOG(@"Trying default encoding %lu for URL: %@", encoding, url);
-    return [self loadFromURL:url encoding:encoding error:error];
-#else
     NSStringEncoding encoding;
     
     NSData *data = [NSData dataWithContentsOfURL:url];
@@ -97,8 +86,6 @@
 #endif
 
     return [self loadFromString:string error:error];
-
-#endif
 }
 
 - (BOOL) loadFromURL: (NSURL*)url
@@ -131,38 +118,6 @@
         WARN(@"Error code %ld: %@", [*error code], [*error localizedFailureReason]);
         return NO;
     }
-}
-
-+ (NSStringEncoding) encodingOfFile: (NSURL*)file {
-    // We call the unix command "file" to get the file encoding:
-    //   $ /usr/bin/file --brief --mime "filename.srt"
-    //   text/plain; charset=utf-8
-    NSTask* task = [NSTask new];
-    [task setLaunchPath: @"/usr/bin/file"];
-    [task setArguments: [NSArray arrayWithObjects: @"--brief", @"--mime", [file path], nil]];
-    NSPipe* pipe = [NSPipe pipe];
-    [task setStandardOutput: pipe];
-    [task launch];
-    NSData* data = [[pipe fileHandleForReading] readDataToEndOfFile];
-    [task waitUntilExit];
-    NSString* output = [[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding] 
-                        stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
-
-    LOG(@"Output from '%@': %@", [task launchPath], output);
-    if ([output hasSuffix:@"=iso-8859-1"])
-        return NSISOLatin1StringEncoding;
-    else if ([output hasSuffix:@"=utf-8"])
-        return NSUTF8StringEncoding;
-    else if ([output hasSuffix:@"=us-ascii"])
-        return NSASCIIStringEncoding;
-    else if ([output hasSuffix:@"=iso-8859-2"])
-        return NSISOLatin2StringEncoding;
-    else if ([output hasSuffix:@"=utf-16be"])
-        return NSUTF16BigEndianStringEncoding;
-    else if ([output hasSuffix:@"=utf-16le"])
-        return NSUTF16LittleEndianStringEncoding;
-    WARN(@"Unrecogniezd output from '%@': %@", [task launchPath], output);
-    return NSASCIIStringEncoding;
 }
 
 

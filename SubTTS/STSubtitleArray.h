@@ -31,6 +31,4 @@
 - (BOOL) loadFromString: (NSString *)string
                   error: (NSError**)error;
 
-+ (NSStringEncoding) encodingOfFile: (NSURL*)file;
-
 @end
