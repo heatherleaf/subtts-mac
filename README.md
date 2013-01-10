@@ -9,15 +9,30 @@ and talks to your favourite video player.
 Currently it supports Quicktime Player X, Quicktime Player 7, VLC Player, and DVD Player.
 It should work for Mac OSX 10.6 and above.
 
-Installation
-------------
+Download and install
+--------------------
 
-	git clone ... (or use GitHub.app)
+The latest release can be downloaded from 
+[Googlecode](http://code.google.com/p/subtts/downloads).
+
+To install, just move the program to your Applications directory.
+
+To use, just double-click on the program icon, as you normally do.
+
+Install from source
+-------------------
+
+If you want the latest development snapshot, you have to install from the source code.
+Open a Terminal window and do the following:
+
+	cd ... (someplace where you want the source code to be)
+	git clone git://github.com/... (URL to the repo, or use the free GitHub.app)
 	cd subtts-mac
 	git submodule update --init --recursive
 	open SubTTS.xcodeproj
 
-Hit `Command-R` to build and run the project in Xcode. You need the free Xcode from the Mac App store. 
+Hit `Command-R` to build and run the project in Xcode. 
+You need to download and install Xcode from the Mac App store. 
 
 License
 -------
