@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3DB586F516A30A9D003435BD /* SubRip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB586F016A30A80003435BD /* SubRip.framework */; };
+		3DB586F616A30AAA003435BD /* SubRip.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB586F016A30A80003435BD /* SubRip.framework */; };
+		3DB586F916A30CF1003435BD /* SubRipItem+SpeakText.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DB586F816A30CF1003435BD /* SubRipItem+SpeakText.m */; };
+		3DB5871D16A31450003435BD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DB5871C16A31450003435BD /* CoreMedia.framework */; };
 		3DBED188163B09F300DC046C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBED187163B09F300DC046C /* ScriptingBridge.framework */; };
 		3DBED1C2163B1E5000DC046C /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBED1BD163B1E3E00DC046C /* UniversalDetector.framework */; };
 		3DBED1C4163B1E6000DC046C /* UniversalDetector.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBED1BD163B1E3E00DC046C /* UniversalDetector.framework */; };
-		D0422D6614FD04C300557ADA /* STSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = D0422D6514FD04C300557ADA /* STSubtitle.m */; };
 		D0422D6D14FD138E00557ADA /* STSubtitleArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D0422D6C14FD138E00557ADA /* STSubtitleArray.m */; };
 		D0AF2FBB14F57DB900B21603 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AF2FBA14F57DB900B21603 /* Cocoa.framework */; };
 		D0AF2FC514F57DB900B21603 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0AF2FC314F57DB900B21603 /* InfoPlist.strings */; };
@@ -27,6 +30,34 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		3DB586ED16A30A80003435BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DB586E416A30A80003435BD /* SubRip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E7237A66146112D100E22EA4;
+			remoteInfo = SubRip;
+		};
+		3DB586EF16A30A80003435BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DB586E416A30A80003435BD /* SubRip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D4181BE16651769006DC6F4;
+			remoteInfo = SubRip.framework;
+		};
+		3DB586F116A30A80003435BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DB586E416A30A80003435BD /* SubRip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D418198166504CF006DC6F4;
+			remoteInfo = SubRipTest;
+		};
+		3DB586F316A30A96003435BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3DB586E416A30A80003435BD /* SubRip.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 3D4181BD16651769006DC6F4;
+			remoteInfo = SubRip.framework;
+		};
 		3DBED1BC163B1E3E00DC046C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */;
@@ -57,6 +88,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				3DB586F616A30AAA003435BD /* SubRip.framework in Copy Frameworks */,
 				3DBED1C4163B1E6000DC046C /* UniversalDetector.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
@@ -65,10 +97,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3DB586E416A30A80003435BD /* SubRip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SubRip.xcodeproj; path = External/SubRip/SubRip.xcodeproj; sourceTree = "<group>"; };
+		3DB586F716A30CF1003435BD /* SubRipItem+SpeakText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SubRipItem+SpeakText.h"; sourceTree = "<group>"; };
+		3DB586F816A30CF1003435BD /* SubRipItem+SpeakText.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "SubRipItem+SpeakText.m"; sourceTree = "<group>"; };
+		3DB5871C16A31450003435BD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		3DBED187163B09F300DC046C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UniversalDetector.xcodeproj; path = External/UniversalDetector/UniversalDetector.xcodeproj; sourceTree = "<group>"; };
-		D0422D6414FD04C300557ADA /* STSubtitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitle.h; sourceTree = "<group>"; usesTabs = 0; };
-		D0422D6514FD04C300557ADA /* STSubtitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitle.m; sourceTree = "<group>"; usesTabs = 0; };
 		D0422D6B14FD138E00557ADA /* STSubtitleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitleArray.h; sourceTree = "<group>"; usesTabs = 0; };
 		D0422D6C14FD138E00557ADA /* STSubtitleArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitleArray.m; sourceTree = "<group>"; usesTabs = 0; };
 		D04253FB14F645010010B4B2 /* DVDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDPlayer.h; sourceTree = "<group>"; };
@@ -109,6 +143,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DB5871D16A31450003435BD /* CoreMedia.framework in Frameworks */,
+				3DB586F516A30A9D003435BD /* SubRip.framework in Frameworks */,
 				3DBED1C2163B1E5000DC046C /* UniversalDetector.framework in Frameworks */,
 				3DBED188163B09F300DC046C /* ScriptingBridge.framework in Frameworks */,
 				D0AF2FBB14F57DB900B21603 /* Cocoa.framework in Frameworks */,
@@ -118,6 +154,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3DB586E516A30A80003435BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3DB586EE16A30A80003435BD /* SubRip.dylib */,
+				3DB586F016A30A80003435BD /* SubRip.framework */,
+				3DB586F216A30A80003435BD /* SubRipTest.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		3DBED1B8163B1E3E00DC046C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,8 +178,8 @@
 			children = (
 				D0422D6B14FD138E00557ADA /* STSubtitleArray.h */,
 				D0422D6C14FD138E00557ADA /* STSubtitleArray.m */,
-				D0422D6414FD04C300557ADA /* STSubtitle.h */,
-				D0422D6514FD04C300557ADA /* STSubtitle.m */,
+				3DB586F716A30CF1003435BD /* SubRipItem+SpeakText.h */,
+				3DB586F816A30CF1003435BD /* SubRipItem+SpeakText.m */,
 			);
 			name = Subtitles;
 			sourceTree = "<group>";
@@ -158,7 +204,9 @@
 		D0AF2FB914F57DB900B21603 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3DB586E416A30A80003435BD /* SubRip.xcodeproj */,
 				3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */,
+				3DB5871C16A31450003435BD /* CoreMedia.framework */,
 				3DBED187163B09F300DC046C /* ScriptingBridge.framework */,
 				D0AF2FBA14F57DB900B21603 /* Cocoa.framework */,
 				D0AF2FBC14F57DB900B21603 /* Other Frameworks */,
@@ -246,6 +294,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				3DB586F416A30A96003435BD /* PBXTargetDependency */,
 				3DBED1C1163B1E4C00DC046C /* PBXTargetDependency */,
 			);
 			name = SubTTS;
@@ -261,7 +310,6 @@
 			attributes = {
 				CLASSPREFIX = ST;
 				LastUpgradeCheck = 0450;
-				ORGANIZATIONNAME = "göteborgs universtiet";
 			};
 			buildConfigurationList = D0AF2FB014F57DB900B21603 /* Build configuration list for PBXProject "SubTTS" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -276,6 +324,10 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 3DB586E516A30A80003435BD /* Products */;
+					ProjectRef = 3DB586E416A30A80003435BD /* SubRip.xcodeproj */;
+				},
+				{
 					ProductGroup = 3DBED1B8163B1E3E00DC046C /* Products */;
 					ProjectRef = 3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */;
 				},
@@ -288,6 +340,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		3DB586EE16A30A80003435BD /* SubRip.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = SubRip.dylib;
+			remoteRef = 3DB586ED16A30A80003435BD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3DB586F016A30A80003435BD /* SubRip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SubRip.framework;
+			remoteRef = 3DB586EF16A30A80003435BD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3DB586F216A30A80003435BD /* SubRipTest.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SubRipTest.octest;
+			remoteRef = 3DB586F116A30A80003435BD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		3DBED1BD163B1E3E00DC046C /* UniversalDetector.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -328,16 +401,21 @@
 				D0D4381D14FA70B200F336C5 /* STPlayer.m in Sources */,
 				D0D4382C14FA8AE400F336C5 /* STQuickTimePlayer.m in Sources */,
 				D0D4386A14FAE4B600F336C5 /* STVLCPlayer.m in Sources */,
-				D0422D6614FD04C300557ADA /* STSubtitle.m in Sources */,
 				D0422D6D14FD138E00557ADA /* STSubtitleArray.m in Sources */,
 				D0F452E815036B0200813633 /* STQuickTime7Player.m in Sources */,
 				D0F452EC150379E600813633 /* STDVDPlayer.m in Sources */,
+				3DB586F916A30CF1003435BD /* SubRipItem+SpeakText.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		3DB586F416A30A96003435BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SubRip.framework;
+			targetProxy = 3DB586F316A30A96003435BD /* PBXContainerItemProxy */;
+		};
 		3DBED1C1163B1E4C00DC046C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = UniversalDetector;

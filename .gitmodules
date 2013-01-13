@@ -1,3 +1,6 @@
 [submodule "External/UniversalDetector"]
 	path = External/UniversalDetector
 	url = git@github.com:JanX2/UniversalDetector.git
+[submodule "External/SubRip"]
+	path = External/SubRip
+	url = git@github.com:JanX2/SubRip-for-Mac.git
