@@ -13,7 +13,7 @@
 - (void)speak {
 	NSSpeechSynthesizer* tts = [NSSpeechSynthesizer new];
     NSString *text = _attributedText.string;
-    LOG(@"Starting speaking: %@", text);
+    LOG(@"Starting speaking: \n%@", text);
     [tts startSpeakingString: text];
 }
 

@@ -145,7 +145,7 @@
     NSUInteger newSubtitleIndex;
     SubRipItem *nextSub = [_loadedSubtitles nextSubRipItemForPointInTime:CMTimeMakeWithSeconds(currentTime, 1000) index:&newSubtitleIndex];
     _ttsNextSubtitleTime = nextSub.startTimeDouble;
-    if (nextSub)  LOG(@"Next sub #%ld in %.1fs (@%.1fs): %@", (unsigned long)newSubtitleIndex, _ttsNextSubtitleTime - currentTime, _ttsNextSubtitleTime,
+    if (nextSub)  LOG(@"Next sub #%ld in %.1fs (@%.1fs): \n%@", (unsigned long)newSubtitleIndex, _ttsNextSubtitleTime - currentTime, _ttsNextSubtitleTime,
         nextSub.text);
     _ttsNextSubtitle = nextSub;
 }
