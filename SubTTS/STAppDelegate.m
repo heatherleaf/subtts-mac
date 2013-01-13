@@ -130,7 +130,11 @@
                    currentTime > _ttsNextSubtitleTime - TICK_INTERVAL) {
             _ttsLastSpokenSubtitle = _ttsNextSubtitle;
             NSTimeInterval diff = _ttsNextSubtitleTime - currentTime;
-            if (diff > 0) usleep(diff * 1000000 / 2);
+            if (diff > 0) {
+                NSDate *next = [NSDate dateWithTimeIntervalSinceNow:(diff/2)];
+                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                         beforeDate:next];
+            }
             [_ttsNextSubtitle speak];
         }
         _ttsLatestCurrentTime = currentTime;
