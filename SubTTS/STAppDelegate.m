@@ -126,12 +126,12 @@
         if (currentTime < _ttsLatestCurrentTime - MIN_SUBTITLE_INTERVAL ||
             currentTime > _ttsNextSubtitleTime + MIN_SUBTITLE_INTERVAL) {
             [self calculateNextSubtitle: currentTime];
-        } else if (_ttsNextSubtitleIndex != _ttsLastSpokenSubtitle &&
+        } else if (_ttsNextSubtitle != _ttsLastSpokenSubtitle &&
                    currentTime > _ttsNextSubtitleTime - TICK_INTERVAL) {
-            _ttsLastSpokenSubtitle = _ttsNextSubtitleIndex;
+            _ttsLastSpokenSubtitle = _ttsNextSubtitle;
             NSTimeInterval diff = _ttsNextSubtitleTime - currentTime;
             if (diff > 0) usleep(diff * 1000000 / 2);
-            [[_loadedSubtitles subRipItemAtIndex:_ttsNextSubtitleIndex] speak];
+            [_ttsNextSubtitle speak];
         }
         _ttsLatestCurrentTime = currentTime;
     }
@@ -141,9 +141,9 @@
     NSUInteger newSubtitleIndex;
     SubRipItem *nextSub = [_loadedSubtitles nextSubRipItemForPointInTime:CMTimeMakeWithSeconds(currentTime, 1000) index:&newSubtitleIndex];
     _ttsNextSubtitleTime = nextSub.startTimeDouble;
-    if (nextSub)  LOG(@"Next sub #%ld in %.1fs (%.1fs): %@", (unsigned long)newSubtitleIndex, _ttsNextSubtitleTime - currentTime, _ttsNextSubtitleTime,
+    if (nextSub)  LOG(@"Next sub #%ld in %.1fs (@%.1fs): %@", (unsigned long)newSubtitleIndex, _ttsNextSubtitleTime - currentTime, _ttsNextSubtitleTime,
         nextSub.text);
-    _ttsNextSubtitleIndex = newSubtitleIndex;
+    _ttsNextSubtitle = nextSub;
 }
 
 - (BOOL) loadSubtitlesForCurrentMovie {
