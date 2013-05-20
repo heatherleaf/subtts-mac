@@ -34,6 +34,21 @@ Open a Terminal window and do the following:
 Hit `Command-R` to build and run the project in Xcode. 
 You need to download and install Xcode from the Mac App store. 
 
+Using SubTTS
+------------------
+
+When you start SubTTS it will reside as a Status Menu in the top right menu bar.
+Let it reside there -- if you want you can set it to start when logging in in the System Preferences.
+
+Open your video in your favourite program 
+(currently one of VLC, DVD Player, Quicktime Player, or Quicktime Player 7).
+
+Now you can select "Start speaking" from the SubTTS menu.
+It will try to find a matching subtitle file -- currently it has to have the same name as the movie, but with a file suffix ".srt", and the two files have to be in the same directory. E.g., if your movie is called "MyFamousMovie.avi", then your subtitle file has to be named "MyFamousMovie.srt".
+
+Note that you need to get hold of a subtitle file your self -- either by writing it in a text editor, or by downloading it from a subtitle repository. Please don't download illegal stuff!
+
+
 License
 -------
 
