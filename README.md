@@ -22,7 +22,7 @@ Hit `Command-R` to build and run the project in Xcode. You need the free Xcode f
 License
 -------
 
-SubTTS is open-source and released under GNU General Public License, version 3.0 or above.
+SubTTS is open-source and released dual licensed under the BSD license and the GNU General Public License, version 3.0 or above.
 
 Windows/Linux version
 ---------------------
