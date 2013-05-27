@@ -11,7 +11,9 @@
 #import "STQuickTime7Player.h"
 #import "STVLCPlayer.h"
 #import "STDVDPlayer.h"
+
 #import "STSubtitleArray.h"
+#import "SubRipItem+SpeakText.h"
 
 #import "QuickTimePlayer.h"
 #define BundleID @"com.apple.QuickTimePlayerX"
@@ -19,15 +21,15 @@
 @implementation STAppDelegate
 
 - (void) awakeFromNib {
-    statusMenu = [NSMenu new];
-    [statusMenu setDelegate: self];
+    _statusMenu = [NSMenu new];
+    [_statusMenu setDelegate:self];
 
-    statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
-    [statusItem setMenu: statusMenu];
-    [statusItem setTitle: NSLocalizedString(@"SubTTS", nil)];
-    [statusItem setHighlightMode: YES];
+    _statusItem = [[NSStatusBar systemStatusBar] statusItemWithLength: NSVariableStatusItemLength];
+    [_statusItem setMenu:_statusMenu];
+    [_statusItem setTitle:NSLocalizedString(@"SubTTS", nil)];
+    [_statusItem setHighlightMode:YES];
 
-    moviePlayers = [NSArray arrayWithObjects:
+    _moviePlayers = [NSArray arrayWithObjects:
                     [STQuickTimePlayer new],
                     [STQuickTime7Player new],
                     [STVLCPlayer new],
@@ -58,17 +60,8 @@
 #define TICK_INTERVAL 0.2
 #define MIN_SUBTITLE_INTERVAL 1.0
 
-NSTimer* ttsTimer;
-STPlayer* ttsCurrentPlayer;
-NSString* ttsCurrentMovieName;
-STSubtitleArray* loadedSubtitles;
-NSTimeInterval ttsLatestCurrentTime;
-NSTimeInterval ttsNextSubtitleTime;
-NSUInteger ttsNextSubtitle;
-NSUInteger ttsLastSpokenSubtitle;
-
 - (BOOL) timerIsActive {
-    return ttsTimer ? [ttsTimer isValid] : NO;
+    return _ttsTimer ? [_ttsTimer isValid] : NO;
 }
 
 - (void) startTimer: (id)sender {
@@ -77,9 +70,9 @@ NSUInteger ttsLastSpokenSubtitle;
     STMovie movie = [player movieAtIndex:0];
     // [player setCurrentMovie:0];
     NSString* name = [player nameOfMovie:movie];
-    if (! (player == ttsCurrentPlayer && name == ttsCurrentMovieName)) {
-        ttsCurrentPlayer = player;
-        ttsCurrentMovieName = name;
+    if (! (player == _ttsCurrentPlayer && name == _ttsCurrentMovieName)) {
+        _ttsCurrentPlayer = player;
+        _ttsCurrentMovieName = name;
         BOOL ok = [self loadSubtitlesForCurrentMovie];
         if (!ok) {
             LOG(@"Resetting timer: SRT not found");
@@ -89,7 +82,7 @@ NSUInteger ttsLastSpokenSubtitle;
         [self calculateNextSubtitle: [player currentTimeOfMovie:movie]];
     }
     LOG(@"Starting timer");
-    ttsTimer = [NSTimer scheduledTimerWithTimeInterval: TICK_INTERVAL
+    _ttsTimer = [NSTimer scheduledTimerWithTimeInterval: TICK_INTERVAL
                                                 target: self 
                                               selector: @selector(tickTimer:) 
                                               userInfo: nil 
@@ -98,71 +91,73 @@ NSUInteger ttsLastSpokenSubtitle;
 }
 
 - (void) stopTimer: (id)sender {
-    if (ttsTimer) {
+    if (_ttsTimer) {
         LOG(@"Stopping timer");
-        [ttsTimer invalidate];
-        STMovie movie = [ttsCurrentPlayer movieWithName: ttsCurrentMovieName];
-        // [ttsCurrentPlayer setCurrentMovieName: ttsCurrentMovieName];
-        [ttsCurrentPlayer pauseMovie: movie];
+        [_ttsTimer invalidate];
+        STMovie movie = [_ttsCurrentPlayer movieWithName:_ttsCurrentMovieName];
+        // [ttsCurrentPlayer setCurrentMovieName: _ttsCurrentMovieName];
+        [_ttsCurrentPlayer pauseMovie: movie];
     }
 }
 
 - (void) resetTTS {
     LOG(@"Resetting timer");
-    loadedSubtitles = nil;
-    ttsCurrentPlayer = nil;
-    ttsCurrentMovieName = nil;
+    _loadedSubtitles = nil;
+    _ttsCurrentPlayer = nil;
+    _ttsCurrentMovieName = nil;
     [self stopTimer: nil];    
 }
 
 - (void) tickTimer: (id)sender {
-    if (![ttsCurrentPlayer isLaunched]) {
-        WARN(@"Player %@ has quit: stopping", [ttsCurrentPlayer title]);
+    if (![_ttsCurrentPlayer isLaunched]) {
+        WARN(@"Player %@ has quit: stopping", [_ttsCurrentPlayer title]);
         [self resetTTS];
         return;
     }
-    STMovie movie = [ttsCurrentPlayer movieWithName: ttsCurrentMovieName];
-    BOOL ok = movie && [ttsCurrentMovieName isEqualToString: [ttsCurrentPlayer nameOfMovie: movie]];
+    STMovie movie = [_ttsCurrentPlayer movieWithName:_ttsCurrentMovieName];
+    BOOL ok = movie && [_ttsCurrentMovieName isEqualToString:[_ttsCurrentPlayer nameOfMovie:movie]];
     if (!ok) {
-        WARN(@"Couldn't find movie %@: stopping!", ttsCurrentMovieName);
+        WARN(@"Couldn't find movie %@: stopping!", _ttsCurrentMovieName);
         [self resetTTS];
         return;
     } 
-    if ([ttsCurrentPlayer isPlayingMovie: movie]) {
-        NSTimeInterval currentTime = [ttsCurrentPlayer currentTimeOfMovie: movie];
-        if (currentTime < ttsLatestCurrentTime - MIN_SUBTITLE_INTERVAL || 
-            currentTime > ttsNextSubtitleTime + MIN_SUBTITLE_INTERVAL) {
+    if ([_ttsCurrentPlayer isPlayingMovie: movie]) {
+        NSTimeInterval currentTime = [_ttsCurrentPlayer currentTimeOfMovie: movie];
+        if (currentTime < _ttsLatestCurrentTime - MIN_SUBTITLE_INTERVAL ||
+            currentTime > _ttsNextSubtitleTime + MIN_SUBTITLE_INTERVAL) {
             [self calculateNextSubtitle: currentTime];
-        } else if (ttsNextSubtitle != ttsLastSpokenSubtitle && 
-                   currentTime > ttsNextSubtitleTime - TICK_INTERVAL) {
-            ttsLastSpokenSubtitle = ttsNextSubtitle;
-            NSTimeInterval diff = ttsNextSubtitleTime - currentTime;
-            if (diff > 0) usleep(diff * 1000000 / 2);
-            [[loadedSubtitles subtitleAtIndex:ttsNextSubtitle] speak];
+        } else if (_ttsNextSubtitle != _ttsLastSpokenSubtitle &&
+                   currentTime > _ttsNextSubtitleTime - TICK_INTERVAL) {
+            _ttsLastSpokenSubtitle = _ttsNextSubtitle;
+            NSTimeInterval diff = _ttsNextSubtitleTime - currentTime;
+            if (diff > 0) {
+                NSDate *next = [NSDate dateWithTimeIntervalSinceNow:(diff/2)];
+                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode
+                                         beforeDate:next];
+            }
+            [_ttsNextSubtitle speak];
         }
-        ttsLatestCurrentTime = currentTime;
+        _ttsLatestCurrentTime = currentTime;
     }
 }
 
 - (void) calculateNextSubtitle: (NSTimeInterval)currentTime {
-    NSUInteger newSubtitle;
-    STSubtitle *nextSub = [loadedSubtitles nextSubtitle:currentTime index:&newSubtitle];
-    ttsNextSubtitleTime = nextSub.start;
-    if (nextSub)  LOG(@"Next sub #%ld in %.1fs (%.1fs): %@", (unsigned long)newSubtitle, ttsNextSubtitleTime - currentTime, ttsNextSubtitleTime,
+    NSUInteger newSubtitleIndex;
+    SubRipItem *nextSub = [_loadedSubtitles nextSubRipItemForPointInTime:CMTimeMakeWithSeconds(currentTime, 1000) index:&newSubtitleIndex];
+    _ttsNextSubtitleTime = nextSub.startTimeDouble;
+    if (nextSub)  LOG(@"Next sub #%ld in %.1fs (@%.1fs): \n%@", (unsigned long)newSubtitleIndex, _ttsNextSubtitleTime - currentTime, _ttsNextSubtitleTime,
         nextSub.text);
-    ttsNextSubtitle = newSubtitle;
+    _ttsNextSubtitle = nextSub;
 }
 
 - (BOOL) loadSubtitlesForCurrentMovie {
-    STMovie movie = [ttsCurrentPlayer movieWithName: ttsCurrentMovieName];
+    STMovie movie = [_ttsCurrentPlayer movieWithName:_ttsCurrentMovieName];
     if (!movie) {
-        WARN(@"Couldn't find movie %@: stopping!", ttsCurrentMovieName);
+        WARN(@"Couldn't find movie %@: stopping!", _ttsCurrentMovieName);
         return NO;
     }
-    LOG(@"Loading SRT for: %@", ttsCurrentMovieName);
-    if (!loadedSubtitles)
-        loadedSubtitles = [STSubtitleArray new];
-    NSURL* movieURL = [ttsCurrentPlayer urlOfMovie: movie];
+    LOG(@"Loading SRT for: %@", _ttsCurrentMovieName);
+    NSURL* movieURL = [_ttsCurrentPlayer urlOfMovie: movie];
     NSError* error;
     NSURL* movieBaseURL = [movieURL URLByDeletingPathExtension];
     NSURL* movieDirectory = [movieURL URLByDeletingLastPathComponent];
@@ -172,41 +167,46 @@ NSUInteger ttsLastSpokenSubtitle;
                           nil];
     for (NSURL* subtitleURL in urlsToTry) {
         LOG(@"Trying: %@", subtitleURL);
-        BOOL ok = [loadedSubtitles loadFromURL: subtitleURL
-                                         error: &error];
-        if (ok) 
+        _loadedSubtitles = [[STSubtitleArray alloc] initWithURL: subtitleURL
+                                                         error: &error];
+        if (_loadedSubtitles != nil) {
             return YES;
-        WARN(@"Error code %ld: %@", [error code], [error localizedFailureReason]);
-        if ([error code] == NSFileReadCorruptFileError ||
-            [error code] == NSFileReadInapplicableStringEncodingError) {
-            NSRunCriticalAlertPanel(@"Error loading subtitles", 
-                                    @"Sorry, I could not read the subtitles", 
-                                    @"Dismiss", nil, nil);
-            return NO;
+        }
+        else {
+            WARN(@"Error code %ld: %@", [error code], [error localizedFailureReason]);
+            if ([error code] == NSFileReadCorruptFileError ||
+                [error code] == NSFileReadInapplicableStringEncodingError) {
+                NSRunCriticalAlertPanel(@"Error loading subtitles",
+                                        @"Sorry, the subtitles could not be read",
+                                        @"Dismiss", nil, nil);
+                return NO;
+            }
         }
     }
     NSOpenPanel* panel = [NSOpenPanel openPanel];
     [panel setDirectoryURL: movieDirectory];
     [panel setTitle: @"Locate subtitle file"];
-    [panel setMessage: [NSString stringWithFormat:@"Locate subtitle file for the movie %@", ttsCurrentMovieName]];
+    [panel setMessage:[NSString stringWithFormat:@"Locate subtitle file for the movie %@", _ttsCurrentMovieName]];
     [panel setAllowedFileTypes: [NSArray arrayWithObjects: @"srt", @"SRT", nil]];
     [panel setAllowsMultipleSelection: NO];
-    BOOL isPlaying = [ttsCurrentPlayer isPlayingMovie: movie];
-    if (isPlaying) [ttsCurrentPlayer pauseMovie: movie];
+    BOOL isPlaying = [_ttsCurrentPlayer isPlayingMovie: movie];
+    if (isPlaying) [_ttsCurrentPlayer pauseMovie: movie];
     NSInteger button = [panel runModal];
     if (button == NSFileHandlingPanelOKButton) {
-        BOOL ok = [loadedSubtitles loadFromURL: [panel URL]
-                                         error: &error];
-        if (ok) {
-            if (isPlaying) [ttsCurrentPlayer playMovie: movie];
+        _loadedSubtitles = [[STSubtitleArray alloc] initWithURL: [panel URL]
+                                                 error: &error];
+        if (_loadedSubtitles != nil) {
+            if (isPlaying) [_ttsCurrentPlayer playMovie: movie];
             return YES;
         }
-        WARN(@"Error code %ld: %@", [error code], [error localizedFailureReason]);
-        NSRunCriticalAlertPanel(@"Error loading subtitles", 
-                                @"Sorry, I could not read the subtitles", 
-                                @"Dismiss", nil, nil);
+        else {
+            WARN(@"Error code %ld: %@", [error code], [error localizedFailureReason]);
+            NSRunCriticalAlertPanel(@"Error loading subtitles",
+                                    @"Sorry, I could not read the subtitles",
+                                    @"Dismiss", nil, nil);
+        }
     }
-    if (isPlaying) [ttsCurrentPlayer playMovie: movie];
+    if (isPlaying) [_ttsCurrentPlayer playMovie: movie];
     return NO;
 }
 
@@ -251,7 +251,7 @@ NSUInteger ttsLastSpokenSubtitle;
     if (isSpeaking) {
         [startSpeaking setEnabled:NO];
         [stopSpeaking setEnabled:YES];
-        [stopSpeaking setTitle: [NSString stringWithFormat: NSLocalizedString(@"Stop speaking %@",nil), ttsCurrentMovieName]];
+        [stopSpeaking setTitle:[NSString stringWithFormat:NSLocalizedString(@"Stop speaking %@", nil), _ttsCurrentMovieName]];
         [stopSpeaking setAction: @selector(stopTimer:)];
     }
     else {
@@ -261,7 +261,7 @@ NSUInteger ttsLastSpokenSubtitle;
     
     NSUInteger initial_items = [menu numberOfItems];
     NSUInteger nr;
-    for (STPlayer* player in moviePlayers) {
+    for (STPlayer* player in _moviePlayers) {
         if ([player isLaunched]) {
             if ([player isFrontmost]) {
                 nr = initial_items; 

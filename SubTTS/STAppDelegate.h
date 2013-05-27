@@ -8,10 +8,21 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class STPlayer, STSubtitleArray, SubRipItem;
+
 @interface STAppDelegate : NSObject <NSApplicationDelegate, NSMenuDelegate> {
-    NSMenu* statusMenu;
-    NSStatusItem* statusItem;
-    NSArray* moviePlayers;
+    NSMenu* _statusMenu;
+    NSStatusItem* _statusItem;
+    NSArray* _moviePlayers;
+    
+    NSTimer* _ttsTimer;
+    STPlayer* _ttsCurrentPlayer;
+    NSString* _ttsCurrentMovieName;
+    STSubtitleArray* _loadedSubtitles;
+    NSTimeInterval _ttsLatestCurrentTime;
+    NSTimeInterval _ttsNextSubtitleTime;
+    SubRipItem* _ttsNextSubtitle;
+    SubRipItem* _ttsLastSpokenSubtitle;
 }
 
 - (void) openPreferences: (id)sender;

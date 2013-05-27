@@ -7,30 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "STSubtitle.h"
+#import <SubRip/SubRip.h>
 
-@interface STSubtitleArray : NSObject {
-    NSMutableArray* subtitles;
-}
+@interface STSubtitleArray : SubRip 
 
-- (NSUInteger) count;
-- (STSubtitle*) subtitleAtIndex: (NSUInteger)nr;
-- (STSubtitle *) nextSubtitle: (NSTimeInterval)now index:(NSUInteger *)index;
-
-- (void) addSubtitle: (NSString*)text 
-               start: (NSTimeInterval)start
-                 end: (NSTimeInterval)end;
-
-- (BOOL) loadFromURL: (NSURL*)url 
-               error: (NSError**)error;
-
-- (BOOL) loadFromURL: (NSURL*)url
-            encoding: (NSStringEncoding)encoding 
-               error: (NSError**)error;
-
-- (BOOL) loadFromString: (NSString *)string
-                  error: (NSError**)error;
-
-+ (NSStringEncoding) encodingOfFile: (NSURL*)file;
+- (instancetype)initWithURL:(NSURL*)url
+                      error:(NSError**)error;
 
 @end
