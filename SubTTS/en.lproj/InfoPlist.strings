@@ -1,5 +1,5 @@
 /* Localized versions of Info.plist keys */
 
-NSHumanReadableCopyright = "Copyright © 2012 Peter Ljunglöf. Distributed under GNU General Public License v3.";
+NSHumanReadableCopyright = "Copyright © 2012–2013 Peter Ljunglöf. Dual licensed under the GNU General Public License, version 3.0 or above, alternatively under the BSD license.";
 CFBundleName = "SubTTS";
 CFBundleDisplayName = "SubTTS";
