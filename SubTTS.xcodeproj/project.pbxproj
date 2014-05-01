@@ -103,6 +103,7 @@
 		3DB5871C16A31450003435BD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		3DBED187163B09F300DC046C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UniversalDetector.xcodeproj; path = External/UniversalDetector/UniversalDetector.xcodeproj; sourceTree = "<group>"; };
+		6BFCDCD6191394C800713592 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		D0422D6B14FD138E00557ADA /* STSubtitleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitleArray.h; sourceTree = "<group>"; usesTabs = 0; };
 		D0422D6C14FD138E00557ADA /* STSubtitleArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitleArray.m; sourceTree = "<group>"; usesTabs = 0; };
 		D04253FB14F645010010B4B2 /* DVDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDPlayer.h; sourceTree = "<group>"; };
@@ -258,6 +259,7 @@
 				D042540314F687000010B4B2 /* QuickTimePlayer7.h */,
 				D0AF2FD814F5848900B21603 /* VLC.h */,
 				D04253FB14F645010010B4B2 /* DVDPlayer.h */,
+				6BFCDCD6191394C800713592 /* iTunes.h */,
 			);
 			name = "SBApplication Headers";
 			sourceTree = "<group>";
