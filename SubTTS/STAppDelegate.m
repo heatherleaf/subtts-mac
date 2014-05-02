@@ -11,6 +11,7 @@
 #import "STQuickTime7Player.h"
 #import "STVLCPlayer.h"
 #import "STDVDPlayer.h"
+#import "STiTunesPlayer.h"
 
 #import "STSubtitleArray.h"
 #import "SubRipItem+SpeakText.h"
@@ -34,6 +35,7 @@
                     [STQuickTime7Player new],
                     [STVLCPlayer new],
                     [STDVDPlayer new],
+                    [STiTunesPlayer new],
                     nil];
 }
 

@@ -14,6 +14,7 @@
 		3DBED188163B09F300DC046C /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBED187163B09F300DC046C /* ScriptingBridge.framework */; };
 		3DBED1C2163B1E5000DC046C /* UniversalDetector.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBED1BD163B1E3E00DC046C /* UniversalDetector.framework */; };
 		3DBED1C4163B1E6000DC046C /* UniversalDetector.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 3DBED1BD163B1E3E00DC046C /* UniversalDetector.framework */; };
+		6BFCDCDC1913950500713592 /* STiTunesPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6BFCDCDB1913950500713592 /* STiTunesPlayer.m */; };
 		D0422D6D14FD138E00557ADA /* STSubtitleArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D0422D6C14FD138E00557ADA /* STSubtitleArray.m */; };
 		D0AF2FBB14F57DB900B21603 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0AF2FBA14F57DB900B21603 /* Cocoa.framework */; };
 		D0AF2FC514F57DB900B21603 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D0AF2FC314F57DB900B21603 /* InfoPlist.strings */; };
@@ -104,6 +105,8 @@
 		3DBED187163B09F300DC046C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UniversalDetector.xcodeproj; path = External/UniversalDetector/UniversalDetector.xcodeproj; sourceTree = "<group>"; };
 		6BFCDCD6191394C800713592 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
+		6BFCDCDA1913950500713592 /* STiTunesPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STiTunesPlayer.h; sourceTree = "<group>"; };
+		6BFCDCDB1913950500713592 /* STiTunesPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STiTunesPlayer.m; sourceTree = "<group>"; };
 		D0422D6B14FD138E00557ADA /* STSubtitleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitleArray.h; sourceTree = "<group>"; usesTabs = 0; };
 		D0422D6C14FD138E00557ADA /* STSubtitleArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitleArray.m; sourceTree = "<group>"; usesTabs = 0; };
 		D04253FB14F645010010B4B2 /* DVDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDPlayer.h; sourceTree = "<group>"; };
@@ -277,6 +280,8 @@
 				D0D4386914FAE4B500F336C5 /* STVLCPlayer.m */,
 				D0F452EA150379E500813633 /* STDVDPlayer.h */,
 				D0F452EB150379E600813633 /* STDVDPlayer.m */,
+				6BFCDCDA1913950500713592 /* STiTunesPlayer.h */,
+				6BFCDCDB1913950500713592 /* STiTunesPlayer.m */,
 			);
 			name = Players;
 			sourceTree = "<group>";
@@ -403,6 +408,7 @@
 				D0D4381D14FA70B200F336C5 /* STPlayer.m in Sources */,
 				D0D4382C14FA8AE400F336C5 /* STQuickTimePlayer.m in Sources */,
 				D0D4386A14FAE4B600F336C5 /* STVLCPlayer.m in Sources */,
+				6BFCDCDC1913950500713592 /* STiTunesPlayer.m in Sources */,
 				D0422D6D14FD138E00557ADA /* STSubtitleArray.m in Sources */,
 				D0F452E815036B0200813633 /* STQuickTime7Player.m in Sources */,
 				D0F452EC150379E600813633 /* STDVDPlayer.m in Sources */,
