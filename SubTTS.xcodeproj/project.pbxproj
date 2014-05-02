@@ -107,6 +107,7 @@
 		6BFCDCD6191394C800713592 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		6BFCDCDA1913950500713592 /* STiTunesPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STiTunesPlayer.h; sourceTree = "<group>"; };
 		6BFCDCDB1913950500713592 /* STiTunesPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STiTunesPlayer.m; sourceTree = "<group>"; };
+		6BFCDCE11913960900713592 /* MPlayerX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPlayerX.h; sourceTree = "<group>"; };
 		D0422D6B14FD138E00557ADA /* STSubtitleArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSubtitleArray.h; sourceTree = "<group>"; usesTabs = 0; };
 		D0422D6C14FD138E00557ADA /* STSubtitleArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSubtitleArray.m; sourceTree = "<group>"; usesTabs = 0; };
 		D04253FB14F645010010B4B2 /* DVDPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DVDPlayer.h; sourceTree = "<group>"; };
@@ -263,6 +264,7 @@
 				D0AF2FD814F5848900B21603 /* VLC.h */,
 				D04253FB14F645010010B4B2 /* DVDPlayer.h */,
 				6BFCDCD6191394C800713592 /* iTunes.h */,
+				6BFCDCE11913960900713592 /* MPlayerX.h */,
 			);
 			name = "SBApplication Headers";
 			sourceTree = "<group>";
