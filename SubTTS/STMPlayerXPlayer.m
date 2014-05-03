@@ -63,14 +63,21 @@
 }
 
 - (NSString*) nameOfMovie: (MPlayerXApplication*)movie {
-    return @"Some Movie"; //TODO
+    if ([movie respondsToSelector:@selector(title)])
+        return [movie title];
+    return @"Some Movie";
 }
 
 - (NSURL*) urlOfMovie: (MPlayerXApplication*)movie {
+    if ([movie respondsToSelector:@selector(url)])
+        return [NSURL URLWithString:[movie url]];
     return nil;
 }
 
 - (NSString*) pathOfMovie: (MPlayerXApplication*)movie {
+    NSURL* URL = [self urlOfMovie:movie];
+    if ([URL isFileURL])
+        return [URL path];
     return nil;
 }
 

@@ -33,6 +33,8 @@ typedef enum MPlayerXPlayerStatus MPlayerXPlayerStatus;
 - (void) seekto:(double)x;  // Seek to given time position.
 - (double) currentTime;  // Get current time position.
 - (double) duration;  // Get the duration of the current media.
+- (NSString *) title;  // Title of the current media.
+- (NSString *) url;  // URL of the current media.
 - (MPlayerXPlayerStatus) playstatus;  // .
 
 @end
