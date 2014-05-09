@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  SubTTS
+
+  Created by Peter Ljunglöf on 2012-02-29.
+  Copyright (C) 2012 Peter Ljunglöf. All rights reserved.
+*/
+
+"Start speaking" = "Spustit čtení";
+"Start speaking %@" = "Spustit čtení pro \"%@\"";
+"Stop speaking" = "Zastavit čtení";
+"Stop speaking %@" = "Zastavit čtení pro \"%@\"";
+"About SubTTS" = "O programu SubTTS";
+"Preferences" = "Nastavení hlasu";
+"Quit" = "Ukončit";
+"SubTTS" = "Mluvící titulky";
