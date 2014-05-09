@@ -1,0 +1,5 @@
+/* Localized versions of Info.plist keys */
+
+NSHumanReadableCopyright = "Copyright © 2012–2013 Peter Ljunglöf. Duálně licencováno pod licencí GNU General Public License, verze 3.0 nebo vyšší, nebo alternativně pod BSD licencí.";
+CFBundleName = "Mluvící titulky";
+CFBundleDisplayName = "Mluvící titulky";

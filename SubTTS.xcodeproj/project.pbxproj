@@ -104,6 +104,9 @@
 		3DB5871C16A31450003435BD /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		3DBED187163B09F300DC046C /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		3DBED19A163B1E3100DC046C /* UniversalDetector.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = UniversalDetector.xcodeproj; path = External/UniversalDetector/UniversalDetector.xcodeproj; sourceTree = "<group>"; };
+		6BA57549191D1F060097CABA /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6BA5754A191D1F060097CABA /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = cs; path = cs.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		6BA5754B191D1F060097CABA /* cs */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = cs; path = cs.lproj/Credits.rtf; sourceTree = "<group>"; };
 		6BFCDCD6191394C800713592 /* iTunes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iTunes.h; sourceTree = "<group>"; };
 		6BFCDCDA1913950500713592 /* STiTunesPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STiTunesPlayer.h; sourceTree = "<group>"; };
 		6BFCDCDB1913950500713592 /* STiTunesPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STiTunesPlayer.m; sourceTree = "<group>"; };
@@ -325,6 +328,7 @@
 			knownRegions = (
 				en,
 				sv,
+				cs,
 			);
 			mainGroup = D0AF2FAB14F57DB900B21603;
 			productRefGroup = D0AF2FB714F57DB900B21603 /* Products */;
@@ -437,6 +441,7 @@
 			children = (
 				D0AF2FC414F57DB900B21603 /* en */,
 				D0B28B0614FE535500865D7B /* sv */,
+				6BA5754A191D1F060097CABA /* cs */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -446,6 +451,7 @@
 			children = (
 				D0AF2FCA14F57DB900B21603 /* en */,
 				D0B28B0E14FE5D2000865D7B /* sv */,
+				6BA5754B191D1F060097CABA /* cs */,
 			);
 			name = Credits.rtf;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 			children = (
 				D0B28B0B14FE58DE00865D7B /* en */,
 				D0B28B0D14FE58E900865D7B /* sv */,
+				6BA57549191D1F060097CABA /* cs */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
